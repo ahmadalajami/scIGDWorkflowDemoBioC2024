@@ -1,4 +1,4 @@
-Package: scIGDemoBioC2024
+Package: scIGDWorkflowDemoBioC2024
 Title: scIGD workflow demo at BioC2024
 Version: 1.0.1
 Authors@R: 
@@ -43,6 +43,6 @@ Suggests:
     pkgdown,
     BiocStyle
 VignetteBuilder: knitr
-URL: https://ahmadalajami.github.io/scIGDemoBioC2024/
-BugReports: https://github.com/ahmadalajami/scIGDemoBioC2024/issues/new/choose
-DockerImage: ghcr.io/ahmadalajami/scigdemobioc2024:latest
+URL: https://ahmadalajami.github.io/scIGDWorkflowDemoBioC2024/
+BugReports: https://github.com/ahmadalajami/scIGDWorkflowDemoBioC2024/issues/new/choose
+DockerImage: ghcr.io/ahmadalajami/scigdworkflowdemobioc2024:latest
