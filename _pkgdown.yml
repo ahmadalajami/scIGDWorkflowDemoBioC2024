@@ -1,4 +1,4 @@
-url: https://ahmadalajami.github.io/scIGDemoBioC2024
+url: https://ahmadalajami.github.io/scIGDWorkflowDemoBioC2024
 
 template:
   params:
@@ -6,11 +6,11 @@ template:
     #ganalytics: UA-99999999-9
 
 home:
-  title: "scIGDemoBioC2024"
+  title: "scIGDWorkflowDemoBioC2024"
   type: inverse
 
 navbar:
   right:
    - icon: fa-github
-     href: https://github.com/ahmadalajami/scIGDemoBioC2024
+     href: https://github.com/ahmadalajami/scIGDWorkflowDemoBioC2024
      
