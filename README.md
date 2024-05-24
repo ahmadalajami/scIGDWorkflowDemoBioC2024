@@ -1,52 +1,72 @@
-# BuildABiocWorkshop
+# Unraveling Immunogenomic Diversity in Single-Cell Data
 
-This package is a template for building a Bioconductor workshop. The package
-includes Github actions to:
+## Background and motivation
 
-1. Set up bioconductor/bioconductor_docker:devel on Github resources
-2. Install package dependencies for your package (based on the `DESCRIPTION` file)
-3. Run `rcmdcheck::rcmdcheck`
-4. Build a pkgdown website and push it to github pages
-5. Build a docker image with the installed package and dependencies and deploy to [the Github Container Repository](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#pulling-container-images) at the name `ghcr.io/gihub_user/repo_name`, all lowercase. 
+The human immune system is governed by a complex interplay of molecules encoded by highly diverse genetic loci. Immune genes such as B and T cell receptors, human leukocyte antigens (HLAs), and killer Ig-like receptors (KIRs) exhibit remarkable allelic diversity across populations. However, conventional single-cell analysis methods often overlook this diversity, leading to erroneous quantification of immune mediators and compromised inter-donor comparability.
 
-## Responsibilities
+## Description
 
-Package authors are primarily responsible for:
+To address these challenges and unlock deeper insights from single-cell studies, we present a comprehensive workflow comprising two software and one data packages (Figure 1):
 
-1. Creating a landing site of their choosing for their workshops (a website). This website should be listed in the `DESCRIPTION` file as the `URL`.
-2. Creating a docker image that will contain workshop materials and the installed packages necessary to run those materials. The name of the resulting docker image, including "tag" if desired, should be listed in a non-standard tag, `DockerImage:` in the `DESCRIPTION` file. 
+1. **[scIGD](https://github.com/AGImkeller/scIGD)** (**s**ingle-**c**ell **I**mmuno**G**enomic **D**iversity): A Snakemake workflow designed to automate allele-typing processes for immune genes, with a focus on key targets like HLAs. In addition, it facilitates allele-specific quantification from scRNA-seq data using donor-specific references.
 
-Both of those tasks can be accomplished using the Github actions included in this template package. The vignette accompanying this package describes how to accomplish both of these tasks.
+2. **[SingleCellAlleleExperiment](https://bioconductor.org/packages/SingleCellAlleleExperiment)**: This R/Bioconductor package maximizes the analytical potential of results obtained from *scIGD*. It offers a versatile multi-layer data structure, allowing representation of immune genes at various levels, from alleles to genes to functionally similar gene groups. This enables comprehensive analysis across different layers of immunologically-relevant annotation.
 
-## Details
+3. **[scaeData](https://bioconductor.org/packages/scaeData)**: An R/ExperimentHub data package housing three 10x datasets processed by *scIGD*. These datasets can be utilized to perform exploratory and downstream analysis using the novel *SingleCellAlleleExperiment* data structure.
 
-For detailed instructions, see the `How to build a workshop` article/vignette.
+![alt text here](./inst/images/scIGD_SCAE_wokflow.png)
 
-## Results of successful deployment
+**Figure 1:** Overview of the *scIGD* workflow for unraveling immunogenomic diversity in single-cell data, highlighting the integration of the *SingleCellAlleleExperiment* package for comprehensive data analysis.
 
-- A working docker image that contains the installed package and dependencies.
-- An up-to-date `pkgdown` website at https://YOURUSERNAME.github.io/YOURREPOSITORYNAME/
-- Docker image will be tagged with `latest`, `sha-XXXXXX` where `XXXXXX` is the hash of the current `master` commit, and `master`. 
+## Insights
 
-## To use the resulting image:
+Preliminary findings demonstrate accurate quantification of different HLA allele groups in (amplicon-based and whole-transcriptome-based) scRNA-seq datasets from diverse sources, including cancer patients and human atlas samples. This not only enhances the comparability of immune profiles across donors but also sheds light on population-specific susceptibilities to infections. Our work lays the groundwork for precise immunological analysis of multi-omics data, particularly in elucidating allele-specific interactions.
 
-```sh
-docker run -e PASSWORD=<choose_a_password_for_rstudio> -p 8787:8787 YOURDOCKERIMAGENAME
-```
-Once running, navigate to http://localhost:8787/ and then login with `rstudio`:`yourchosenpassword`. 
+## BioC2024 demo
 
-To try with **this** repository docker image:
+I intend to showcase all three tools, emphasizing the utilization of *SingleCellAlleleExperiment* and its functionalities on one of the example datasets available in *scaeData*, for exploratory and downstream analysis across the three layers offered by the data structure.
 
-```sh
-docker run -e PASSWORD=abc -p 8787:8787 ghcr.io/bioconductor/buildabiocworkshop
-```
+## Pre-requisites
 
-*NOTE*: Running docker that uses the password in plain text like above exposes the password to others 
-in a multi-user system (like a shared workstation or compute node). In practice, consider using an environment 
-variable instead of plain text to pass along passwords and other secrets in docker command lines. 
+- Basic knowledge of R syntax
+- Familiarity with single-cell transcriptomic analyses, such as *[OSCA](https://bioconductor.org/books/OSCA)*
+- Familiarity with *[SingleCellExperiment](https://bioconductor.org/packages/SingleCellExperiment)* and/or *[SummarizedExperiment](https://bioconductor.org/packages/SummarizedExperiment)*
 
+## Participation
 
-## Whatcha get
+The format is a 45 minute session consisting of hands-on demos, exercises and Q&A.
 
-- https://bioconductor.github.io/BuildABiocWorkshop
-- A Docker image that you can run locally, in the cloud, or (usually) even as a singularity container on HPC systems. 
+Questions are welcome at any time. Contact details are listed at the bottom of the page.
+
+## *R* / *Bioconductor* packages used
+
+- `SingleCellAlleleExperiment`: https://bioconductor.org/packages/SingleCellAlleleExperiment
+- `scaeData`: https://bioconductor.org/packages/scaeData
+
+## Time outline
+
+| Activity                                      | Time |
+|-----------------------------------------------|------|
+| Introduction                                  | 10m  |
+| Overview of scIGD                             | 5m   |
+| Overview of scaeData                          | 5m   |
+| SingleCellAlleleExperiment + data analysis    | 25m  |
+
+## Demo goals and objectives
+
+### Learning goals
+
+- Learn the constraints inherent in traditional single-cell analysis techniques and the importance of HLA allele-specific quantification
+- Understand the difference between `SingleCellExperiment` and `SingleCellAlleleExperiment`
+- Demonstrate how these tools can be applied and adopted to enhance existing workflows
+
+### Learning objectives
+
+- Perform allele typing to identify HLA alleles from genetic sequences in scRNA-seq data
+- Achieve allele-specific quantification using donor-specific references
+- Navigate through distinct layers within the data object for diverse representations of HLA genes
+- Conduct exploratory data and downstream analyses across any of the layers offered by the data object
+
+## Instructor name and contact information
+
+- Ahmad Al Ajami \<alajami at med.uni-frankfurt.de>
