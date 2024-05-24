@@ -2,8 +2,8 @@ pandoc: '3.2'
 pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
-  scIGDemo: scIGDemo.html
-last_built: 2024-05-23T13:31Z
+  scIGDWorkflowDemo: scIGDWorkflowDemo.html
+last_built: 2024-05-24T10:15Z
 urls:
   reference: https://ahmadalajami.github.io/scIGDWorkflowDemoBioC2024/reference
   article: https://ahmadalajami.github.io/scIGDWorkflowDemoBioC2024/articles

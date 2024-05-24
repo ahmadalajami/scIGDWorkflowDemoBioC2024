@@ -50,7 +50,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/scIGDemo.html">An Example Workshop</a>
+      <a href="articles/scIGDWorkflowDemo.html">An Example Workshop</a>
     </li>
   </ul>
 </li>
@@ -75,57 +75,124 @@
       </header><div class="row">
   <div class="contents col-md-9">
 <div class="section level1">
-<div class="page-header"><h1 id="buildabiocworkshop">BuildABiocWorkshop<a class="anchor" aria-label="anchor" href="#buildabiocworkshop"></a>
+<div class="page-header"><h1 id="unraveling-immunogenomic-diversity-in-single-cell-data">Unraveling Immunogenomic Diversity in Single-Cell Data<a class="anchor" aria-label="anchor" href="#unraveling-immunogenomic-diversity-in-single-cell-data"></a>
 </h1></div>
-<p>This package is a template for building a Bioconductor workshop. The package includes Github actions to:</p>
-<ol style="list-style-type: decimal">
-<li>Set up bioconductor/bioconductor_docker:devel on Github resources</li>
-<li>Install package dependencies for your package (based on the <code>DESCRIPTION</code> file)</li>
-<li>Run <code><a href="http://r-lib.github.io/rcmdcheck/reference/rcmdcheck.html" class="external-link">rcmdcheck::rcmdcheck</a></code>
-</li>
-<li>Build a pkgdown website and push it to github pages</li>
-<li>Build a docker image with the installed package and dependencies and deploy to <a href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#pulling-container-images" class="external-link">the Github Container Repository</a> at the name <code>ghcr.io/gihub_user/repo_name</code>, all lowercase.</li>
-</ol>
 <div class="section level2">
-<h2 id="responsibilities">Responsibilities<a class="anchor" aria-label="anchor" href="#responsibilities"></a>
+<h2 id="background-and-motivation">Background and motivation<a class="anchor" aria-label="anchor" href="#background-and-motivation"></a>
 </h2>
-<p>Package authors are primarily responsible for:</p>
-<ol style="list-style-type: decimal">
-<li>Creating a landing site of their choosing for their workshops (a website). This website should be listed in the <code>DESCRIPTION</code> file as the <code>URL</code>.</li>
-<li>Creating a docker image that will contain workshop materials and the installed packages necessary to run those materials. The name of the resulting docker image, including “tag” if desired, should be listed in a non-standard tag, <code>DockerImage:</code> in the <code>DESCRIPTION</code> file.</li>
-</ol>
-<p>Both of those tasks can be accomplished using the Github actions included in this template package. The vignette accompanying this package describes how to accomplish both of these tasks.</p>
+<p>The human immune system is governed by a complex interplay of molecules encoded by highly diverse genetic loci. Immune genes such as B and T cell receptors, human leukocyte antigens (HLAs), and killer Ig-like receptors (KIRs) exhibit remarkable allelic diversity across populations. However, conventional single-cell analysis methods often overlook this diversity, leading to erroneous quantification of immune mediators and compromised inter-donor comparability.</p>
 </div>
 <div class="section level2">
-<h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a>
+<h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
 </h2>
-<p>For detailed instructions, see the <code>How to build a workshop</code> article/vignette.</p>
+<p>To address these challenges and unlock deeper insights from single-cell studies, we present a comprehensive workflow comprising two software and one data packages (Figure 1):</p>
+<ol style="list-style-type: decimal">
+<li><p><strong><a href="https://github.com/AGImkeller/scIGD" class="external-link">scIGD</a></strong> (<strong>s</strong>ingle-<strong>c</strong>ell <strong>I</strong>mmuno<strong>G</strong>enomic <strong>D</strong>iversity): A Snakemake workflow designed to automate allele-typing processes for immune genes, with a focus on key targets like HLAs. In addition, it facilitates allele-specific quantification from scRNA-seq data using donor-specific references.</p></li>
+<li><p><strong><a href="https://bioconductor.org/packages/SingleCellAlleleExperiment" class="external-link">SingleCellAlleleExperiment</a></strong>: This R/Bioconductor package maximizes the analytical potential of results obtained from <em>scIGD</em>. It offers a versatile multi-layer data structure, allowing representation of immune genes at various levels, from alleles to genes to functionally similar gene groups. This enables comprehensive analysis across different layers of immunologically-relevant annotation.</p></li>
+<li><p><strong><a href="https://bioconductor.org/packages/scaeData" class="external-link">scaeData</a></strong>: An R/ExperimentHub data package housing three 10x datasets processed by <em>scIGD</em>. These datasets can be utilized to perform exploratory and downstream analysis using the novel <em>SingleCellAlleleExperiment</em> data structure.</p></li>
+</ol>
+<div class="float">
+<img src="./inst/images/scIGD_SCAE_wokflow.png" alt="alt text here"><div class="figcaption">alt text here</div>
+</div>
+<p><strong>Figure 1:</strong> Overview of the <em>scIGD</em> workflow for unraveling immunogenomic diversity in single-cell data, highlighting the integration of the <em>SingleCellAlleleExperiment</em> package for comprehensive data analysis.</p>
 </div>
 <div class="section level2">
-<h2 id="results-of-successful-deployment">Results of successful deployment<a class="anchor" aria-label="anchor" href="#results-of-successful-deployment"></a>
+<h2 id="insights">Insights<a class="anchor" aria-label="anchor" href="#insights"></a>
+</h2>
+<p>Preliminary findings demonstrate accurate quantification of different HLA allele groups in (amplicon-based and whole-transcriptome-based) scRNA-seq datasets from diverse sources, including cancer patients and human atlas samples. This not only enhances the comparability of immune profiles across donors but also sheds light on population-specific susceptibilities to infections. Our work lays the groundwork for precise immunological analysis of multi-omics data, particularly in elucidating allele-specific interactions.</p>
+</div>
+<div class="section level2">
+<h2 id="bioc2024-demo">BioC2024 demo<a class="anchor" aria-label="anchor" href="#bioc2024-demo"></a>
+</h2>
+<p>I intend to showcase all three tools, emphasizing the utilization of <em>SingleCellAlleleExperiment</em> and its functionalities on one of the example datasets available in <em>scaeData</em>, for exploratory and downstream analysis across the three layers offered by the data structure.</p>
+</div>
+<div class="section level2">
+<h2 id="pre-requisites">Pre-requisites<a class="anchor" aria-label="anchor" href="#pre-requisites"></a>
 </h2>
 <ul>
-<li>A working docker image that contains the installed package and dependencies.</li>
-<li>An up-to-date <code>pkgdown</code> website at <a href="https://YOURUSERNAME.github.io/YOURREPOSITORYNAME/" class="external-link uri">https://YOURUSERNAME.github.io/YOURREPOSITORYNAME/</a>
+<li>Basic knowledge of R syntax</li>
+<li>Familiarity with single-cell transcriptomic analyses, such as <em><a href="https://bioconductor.org/books/OSCA" class="external-link">OSCA</a></em>
 </li>
-<li>Docker image will be tagged with <code>latest</code>, <code>sha-XXXXXX</code> where <code>XXXXXX</code> is the hash of the current <code>master</code> commit, and <code>master</code>.</li>
+<li>Familiarity with <em><a href="https://bioconductor.org/packages/SingleCellExperiment" class="external-link">SingleCellExperiment</a></em> and/or <em><a href="https://bioconductor.org/packages/SummarizedExperiment" class="external-link">SummarizedExperiment</a></em>
+</li>
 </ul>
 </div>
 <div class="section level2">
-<h2 id="to-use-the-resulting-image">To use the resulting image:<a class="anchor" aria-label="anchor" href="#to-use-the-resulting-image"></a>
+<h2 id="participation">Participation<a class="anchor" aria-label="anchor" href="#participation"></a>
 </h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-e</span> PASSWORD=<span class="op">&lt;</span>choose_a_password_for_rstudio<span class="op">&gt;</span> -p 8787:8787 YOURDOCKERIMAGENAME</span></code></pre></div>
-<p>Once running, navigate to <a href="http://localhost:8787/" class="external-link uri">http://localhost:8787/</a> and then login with <code>rstudio</code>:<code>yourchosenpassword</code>.</p>
-<p>To try with <strong>this</strong> repository docker image:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-e</span> PASSWORD=abc <span class="at">-p</span> 8787:8787 ghcr.io/bioconductor/buildabiocworkshop</span></code></pre></div>
-<p><em>NOTE</em>: Running docker that uses the password in plain text like above exposes the password to others in a multi-user system (like a shared workstation or compute node). In practice, consider using an environment variable instead of plain text to pass along passwords and other secrets in docker command lines.</p>
+<p>The format is a 45 minute session consisting of hands-on demos, exercises and Q&amp;A.</p>
+<p>Questions are welcome at any time. Contact details are listed at the bottom of the page.</p>
 </div>
 <div class="section level2">
-<h2 id="whatcha-get">Whatcha get<a class="anchor" aria-label="anchor" href="#whatcha-get"></a>
+<h2 id="r--bioconductor-packages-used">
+<em>R</em> / <em>Bioconductor</em> packages used<a class="anchor" aria-label="anchor" href="#r--bioconductor-packages-used"></a>
 </h2>
 <ul>
-<li><a href="https://bioconductor.github.io/BuildABiocWorkshop" class="external-link uri">https://bioconductor.github.io/BuildABiocWorkshop</a></li>
-<li>A Docker image that you can run locally, in the cloud, or (usually) even as a singularity container on HPC systems.</li>
+<li>
+<code>SingleCellAlleleExperiment</code>: <a href="https://bioconductor.org/packages/SingleCellAlleleExperiment" class="external-link uri">https://bioconductor.org/packages/SingleCellAlleleExperiment</a>
+</li>
+<li>
+<code>scaeData</code>: <a href="https://bioconductor.org/packages/scaeData" class="external-link uri">https://bioconductor.org/packages/scaeData</a>
+</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="time-outline">Time outline<a class="anchor" aria-label="anchor" href="#time-outline"></a>
+</h2>
+<table class="table">
+<thead><tr class="header">
+<th>Activity</th>
+<th>Time</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Introduction</td>
+<td>10m</td>
+</tr>
+<tr class="even">
+<td>Overview of scIGD</td>
+<td>5m</td>
+</tr>
+<tr class="odd">
+<td>Overview of scaeData</td>
+<td>5m</td>
+</tr>
+<tr class="even">
+<td>SingleCellAlleleExperiment + data analysis</td>
+<td>25m</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level2">
+<h2 id="demo-goals-and-objectives">Demo goals and objectives<a class="anchor" aria-label="anchor" href="#demo-goals-and-objectives"></a>
+</h2>
+<div class="section level3">
+<h3 id="learning-goals">Learning goals<a class="anchor" aria-label="anchor" href="#learning-goals"></a>
+</h3>
+<ul>
+<li>Learn the constraints inherent in traditional single-cell analysis techniques and the importance of HLA allele-specific quantification</li>
+<li>Understand the difference between <code>SingleCellExperiment</code> and <code>SingleCellAlleleExperiment</code>
+</li>
+<li>Demonstrate how these tools can be applied and adopted to enhance existing workflows</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="learning-objectives">Learning objectives<a class="anchor" aria-label="anchor" href="#learning-objectives"></a>
+</h3>
+<ul>
+<li>Perform allele typing to identify HLA alleles from genetic sequences in scRNA-seq data</li>
+<li>Achieve allele-specific quantification using donor-specific references</li>
+<li>Navigate through distinct layers within the data object for diverse representations of HLA genes</li>
+<li>Conduct exploratory data and downstream analyses across any of the layers offered by the data object</li>
+</ul>
+</div>
+</div>
+<div class="section level2">
+<h2 id="instructor-name-and-contact-information">Instructor name and contact information<a class="anchor" aria-label="anchor" href="#instructor-name-and-contact-information"></a>
+</h2>
+<ul>
+<li>Ahmad Al Ajami &lt;alajami at med.uni-frankfurt.de&gt;</li>
 </ul>
 </div>
 </div>
