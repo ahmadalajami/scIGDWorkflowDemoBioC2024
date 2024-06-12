@@ -43,6 +43,7 @@ Suggests:
     pkgdown,
     BiocStyle
 VignetteBuilder: knitr
-URL: https://ahmadalajami.github.io/scIGDWorkflowDemoBioC2024/
+URL: https://ahmadalajami.github.io/scIGDWorkflowDemoBioC2024/,
+    ghcr.io/ahmadalajami/scigdworkflowdemobioc2024
 BugReports: https://github.com/ahmadalajami/scIGDWorkflowDemoBioC2024/issues/new/choose
 DockerImage: ghcr.io/ahmadalajami/scigdworkflowdemobioc2024:latest
