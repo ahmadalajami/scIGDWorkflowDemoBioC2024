@@ -323,7 +323,7 @@ chosen_hvgs <- getTopHVGs(gene_var, prop=0.2)
 ```
 
 ```{r}
-scae <- scater::runPCA(as(scae, "SingleCellExperiment"), subset_row=chosen_hvgs)
+scae <- scater::runPCA(as(scae, "SingleCellExperiment"))
 ```
 
 ```{r}
