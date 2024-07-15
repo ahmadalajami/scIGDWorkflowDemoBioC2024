@@ -1,9 +1,9 @@
 ---
-title: "An Example Workshop"
-author: Sean Davis^[seandavi@gmail.com]
+title: "scIGD: Unraveling Immunogenomic Diversity in Single-Cell Data"
+author: Ahmad Al Ajami^[alajami@med.uni-frankfurt.de], Jonas Schuck^[schuck@med.uni-frankfurt.de], Federico Marini^[marinif@uni-mainz.de], Katharina Imkeller^[imkeller@med.uni-frankfurt.de]
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{An Example Workshop}
+  %\VignetteIndexEntry{scIGD}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,95 +16,450 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Workshop Title
+# Overview
 
-Authors:
-    Author Name^[Institution],
-    Another Author^[Another Institution].
-    <br/>
-Last modified: 14 May, 2018.
+The human immune system is governed by a complex interplay of molecules encoded by highly diverse genetic loci. Immune genes such as B and T cell receptors, human leukocyte antigens (HLAs), and killer Ig-like receptors (KIRs) exhibit remarkable allelic diversity across populations. However, conventional single-cell analysis methods often overlook this diversity, leading to erroneous quantification of immune mediators and compromised inter-donor comparability.
 
-## Overview
+## Description
 
-### Description
+To address these challenges and unlock deeper insights from single-cell studies, we present a comprehensive workflow comprising two software and one data packages:
 
-Along with the topic of your workshop, include how students can expect
-to spend their time. For the description may also include information
-about what type of workshop it is (e.g. instructor-led live demo, lab,
-lecture + lab, etc.). Instructors are strongly recommended to provide
-completely worked examples for lab sessions, and a set of stand-alone
-notes that can be read and understood outside of the workshop.
+1. **[scIGD](https://github.com/AGImkeller/scIGD)** (**s**ingle-**c**ell **I**mmuno**G**enomic **D**iversity): A Snakemake workflow designed to automate allele-typing processes for immune genes, with a focus on key targets like HLAs. In addition, it facilitates allele-specific quantification from scRNA-seq data using donor-specific references.
 
-### Pre-requisites
+2. **[SingleCellAlleleExperiment](https://bioconductor.org/packages/SingleCellAlleleExperiment)**: This R/Bioconductor package maximizes the analytical potential of results obtained from *scIGD*. It offers a versatile multi-layer data structure, allowing representation of immune genes at various levels, from alleles to genes to functionally similar gene groups. This enables comprehensive analysis across different layers of immunologically-relevant annotation.
 
-List any workshop prerequisites, for example:
+3. **[scaeData](https://bioconductor.org/packages/scaeData)**: An R/ExperimentHub data package housing three 10x datasets processed by *scIGD*. These datasets can be utilized to perform exploratory and downstream analysis using the novel *SingleCellAlleleExperiment* data structure.
 
-* Basic knowledge of R syntax
-* Familiarity with the GenomicRanges class
-* Familiarity with xyz vignette (provide link)
+## Pre-requisites
 
-List relevant background reading for the workshop, including any
-theoretical background you expect students to have.
+- Basic knowledge of R syntax
+- Familiarity with single-cell transcriptomic analyses, such as *[OSCA](https://bioconductor.org/books/OSCA)*
+- Familiarity with *[SingleCellExperiment](https://bioconductor.org/packages/SingleCellExperiment)* and/or *[SummarizedExperiment](https://bioconductor.org/packages/SummarizedExperiment)*
 
-* List any textbooks, papers, or other reading that students should be
-  familiar with. Include direct links where possible.
+## Participation
 
-### Participation
+The format is a 45 minute session consisting of hands-on demos, exercises and Q&A.
 
-Describe how students will be expected to participate in the workshop.
+Questions are welcome at any time. Contact details are listed at the bottom of the page.
 
-### _R_ / _Bioconductor_ packages used
+## *R* / *Bioconductor* packages used
 
-List any _R_ / _Bioconductor_ packages that will be explicitly covered.
+- `SingleCellAlleleExperiment`: https://bioconductor.org/packages/SingleCellAlleleExperiment
+- `scaeData`: https://bioconductor.org/packages/scaeData
 
-### Time outline
+## Time outline
 
-An example for a 45-minute workshop:
+| Activity                                      | Time |
+|-----------------------------------------------|------|
+| Introduction                                  | 10m  |
+| Overview of scIGD                             | 5m   |
+| Overview of scaeData                          | 5m   |
+| SingleCellAlleleExperiment + data analysis    | 25m  |
 
-| Activity                     | Time |
-|------------------------------|------|
-| Packages                     | 15m  |
-| Package Development          | 15m  |
-| Contributing to Bioconductor | 5m   |
-| Best Practices               | 10m  |
-
-### Workshop goals and objectives
-
-List "big picture" student-centered workshop goals and learning
-objectives. Learning goals and objectives are related, but not the
-same thing. These goals and objectives will help some people to decide
-whether to attend the conference for training purposes, so please make
-these as precise and accurate as possible.
-
-*Learning goals* are high-level descriptions of what
-participants will learn and be able to do after the workshop is
-over. *Learning objectives*, on the other hand, describe in very
-specific and measurable terms specific skills or knowledge
-attained. The [Bloom's Taxonomy](#bloom) may be a useful framework
-for defining and describing your goals and objectives, although there
-are others.
+## Demo goals and objectives
 
 ### Learning goals
 
-Some examples:
-
-* describe how to...
-* identify methods for...
-* understand the difference between...
+- Learn the constraints inherent in traditional single-cell analysis techniques and the importance of HLA allele-specific quantification
+- Understand the difference between `SingleCellExperiment` and `SingleCellAlleleExperiment`
+- Demonstrate how these tools can be applied and adopted to enhance existing workflows
 
 ### Learning objectives
 
-* analyze xyz data to produce...
-* create xyz plots
-* evaluate xyz data for artifacts
+- Perform allele typing to identify HLA alleles from genetic sequences in scRNA-seq data
+- Achieve allele-specific quantification using donor-specific references
+- Navigate through distinct layers within the data object for diverse representations of HLA genes
+- Conduct exploratory data and downstream analyses across any of the layers offered by the data object
 
-## Workshop
+# Workflow demo
 
-Divide the workshop into sections (`## A Section`). Include
-fully-evaluated _R_ code chunks. Develop exercises and solutions, and
-anticipate that your audience will walk through the code with you, or
-work on the code idependently -- do not be too ambitious in the
-material that you present.
+We start by loading the packages that will be used in this demo
 
+```{r libraries, include=TRUE, message=FALSE, cache=FALSE}
+suppressPackageStartupMessages({
+library(SingleCellAlleleExperiment)
+library(scaeData)
+library(tidyverse)
+library(gridExtra)
+library(DropletUtils)
+library(Matrix)
+library(cowplot)
+library(scran)
+library(scater)
+library(pheatmap)
+})
+```
 
+## Loading data
 
+`scaeData` consists of 3 single-cell RNA-sequencing datasets that were sourced from publicly available datasets provided by 10x Genomics, and processed using `scIGD`:
+
+- `pbmc_5k`: 5k Peripheral Blood Mononuclear Cells (PBMCs) from a Healthy Donor (v3 chemistry)
+
+- `pbmc_10k`: 10k Human PBMCs, 3' v3.1, Chromium Controller
+
+- `pbmc_20k`: 20k Human PBMCs, 3' HT v3.1, Chromium X
+
+The `scaeDataGet()` function returns a list with four elements. The `dir` element specifies the directory where files downloaded from `ExperimentHub` are stored on your device. The remaining three elements, `barcodes`, `features`, and `matrix`, contain the corresponding file names as named by `ExperimentHub`. This list is then used to provide the necessary information for the related parameters in `SingleCellAlleleExperiment`
+
+Here, let's view `pbmc_20k`:
+
+```{r}
+data <- scaeDataGet(dataset = "pbmc_20k")
+
+cells.dir <- file.path(data$dir, data$barcodes)
+features.dir <- file.path(data$dir, data$features)
+mat.dir <- file.path(data$dir, data$matrix)
+
+cells <- utils::read.csv(cells.dir, sep = "", header = FALSE)
+features <- utils::read.delim(features.dir, header = FALSE)
+mat <- Matrix::readMM(mat.dir)
+
+rownames(mat) <- cells$V1
+colnames(mat) <- features$V1
+head(mat)
+```
+
+A lookup table corresponding to each dataset, facilitating the creation of relevant additional data layers during object generation, can be accessed from the package's extdata:
+
+```{r}
+lookup <- read.csv(system.file("extdata", "pbmc_20k_lookup_table.csv", package="scaeData"))
+head(lookup)
+```
+
+## SingleCellAlleleExperiment
+
+We proceed to generate a `SingleCellAlleleExperiment` object.
+
+The read-in function `read_allele_counts()` is used to read in the data and generate a `scae` object.
+
+When using your own data generated by `scIGD`, state the path containing all expected files to the `sample_dir` parameter in the `read_allele_counts()` function and the corresponding `lookup table`. In case you renamed the files, specify the new file identifiers in the corresponding parameters `lookup_file`, `barcode_file`, `gene_file`, and `matrix_file`, otherwise leave them to the stated default values.
+
+`filter_mode="no"`: default value. This performs filtering based on `threshold=0` - filtering out columns (aka cells) with a count sum of 0 over all rows (aka features).
+
+`filter_mode="yes"`: performs advanced filtering on the computed inflection point of a knee plot based on barcode ranks. The information to the corresponding plot including the inflection point used for filtering is stored in `metadata(scae)[["knee_info"]]`.
+
+`filter_mode="custom"`: enables custom filtering based on a threshold specified in the `filter_threshold` parameter. This is particularly useful if, after examining the knee plot with `filter_mode="yes"`, you decide to use a different filter threshold.
+
+`log=TRUE`: performs normalization on the raw counts - default value. Note that the count matrix is extended (additional rows are added) during object generation. It is crucial to compute size factors only on data layers present in the raw data (non-immune and alleles). Otherwise, immune features would contribute to the size factors multiple times and thus, the size factors would be incorrect.
+
+`gene_symbols=TRUE`: adds the corresponding gene symbols of the ENSEMBL ids to `rowData`.
+
+```{r scae}
+scae <- read_allele_counts(samples_dir=data$dir,
+                           barcode_file=data$barcodes,
+                           gene_file=data$features,
+                           matrix_file=data$matrix,
+                           lookup_file=lookup,
+                           filter_mode="yes",
+                           log=TRUE,
+                           gene_symbols=TRUE,
+                           sample_names="example_data",
+                           verbose=TRUE)
+
+scae
+
+# when using your own data generated by scIGD, you only have to populate `samples_dir` with the folder path. All of `barcode_file`, `gene_file` and `matrix_file` can be left untouched.
+```
+
+### Showcasing content of object slots
+
+#### rowData
+
+Two new classification columns are introduced in the `rowData` slot. Namely, the `NI_I` column (classification of each row as `NI=non_immune` or `I=immune`) and `Quant_type` column (classification of each row to its corresponding data layer). Both columns are used jointly to match each row in the object to its corresponding data layer:
+
+```{r}
+rowData(scae)
+```
+
+#### colData
+
+Contains sample and barcode information. If the logcounts assay is computed, find another column containing the sizeFactors here:
+
+```{r}
+colData(scae)
+```
+
+### Extracting layer-specific features
+
+Getters are implemented to retrieve the different data layers integrated within the scae object.
+
+#### Non-immune genes
+
+```{r}
+scae_nonimmune_subset <- scae_subset(scae, "nonimmune")
+scae_nonimmune_subset
+```
+
+#### Alleles
+
+```{r}
+scae_alleles_subset <- scae_subset(scae, "alleles")
+scae_alleles_subset
+```
+
+#### HLA/Immune genes
+
+```{r}
+scae_immune_subset <- scae_subset(scae, "immune_genes")
+scae_immune_subset
+```
+
+#### Functional gene groups
+
+```{r}
+scae_functional_groups_subset <- scae_subset(scae, "functional_groups")
+scae_functional_groups_subset
+```
+
+## Pre-processing workflow
+
+```{r, fig.height=5, fig.width=7}
+plot_total_counts <- function(scae) {
+  total_counts <- colSums(counts(scae))
+  
+  ggplot(data.frame(Total_Counts = total_counts), aes(x = Total_Counts)) +
+    geom_histogram(binwidth = 1000, fill = "skyblue", color = "black") +
+    labs(x = "total counts per cell",
+         y = "number of cells") +
+    theme_bw()
+}
+
+plot_total_counts(scae)
+```
+
+### Feature filtering
+
+Removing all features that have a total count less than 5; with the exception of all HLA/immune features - these are retained
+
+```{r}
+rownames(scae) <- sub("\\..*", "", rownames(scae))
+'%nin%' <- Negate('%in%')
+
+filter_features <- function(scae){
+  immune_features <- grep("^ENS", rownames(scae), invert=TRUE, value=TRUE)
+  other_genes <- rownames(scae) %nin% immune_features
+  
+  features_keep <- rowSums(counts(scae)[other_genes, ]) > 5
+  features_keep_names <- names(features_keep)[which(features_keep)]
+  scae <- scae[c(features_keep_names, immune_features), ]
+  return(scae)
+}
+
+scae <- filter_features(scae)
+dim(scae)
+```
+
+## Processing workflow
+
+### Normalization
+
+The data is normalized upon creating the *SingleCellAlleleExperiment* object
+
+### Distribution of HLA/immune features
+
+```{r, fig.width=10, fig.height=10}
+plot_allele_dist <- function(scae){
+  immune_features <- grep("^ENS", rownames(scae), invert=TRUE, value=TRUE)
+  p <- do.call(plot_grid, c(lapply(immune_features, function(feature){
+    ggplot(as.data.frame(logcounts(scae)[feature, ]), aes(x=logcounts(scae)[feature, ])) +
+      geom_histogram(color="black",
+                     fill = "black",
+                     breaks=seq(0, 3, by=0.10)) +
+      labs(x = feature) +
+      theme(axis.title.x = element_text(size = 8),
+            axis.title.y = element_text(size = 8),
+            plot.title = element_text(size = 8))}), ncol = 4))
+  print(p)
+}
+
+plot_allele_dist(scae)
+```
+
+```{r, fig.height=5, fig.width=7}
+plot_feature_expression <- function(scae, scae_feature) {
+  plotExpression(scae, scae_feature) +
+    theme_bw() +
+    theme(axis.text = element_text(size = 5),
+          axis.title = element_text(size = 8, face = "bold"), 
+          axis.text.x = element_text(angle = 45, hjust = 1))
+}
+
+scae_feature <- c(scae_subset(scae, subset = "alleles") %>% rownames,
+                  scae_subset(scae, subset = "immune_genes") %>% rownames,
+                  scae_subset(scae, subset = "functional_groups") %>% rownames)
+plot_feature_expression(scae, scae_feature)
+```
+
+## Downstream Analysis
+
+In this section, we provide insights into the various data layers of the `scae` object and offer guidance on performing HLA/immune gene expression analysis
+
+### Dimensionality reduction & clustering
+
+PCA, UMAP, tSNE, and SNN graph can be computed/built using any of the three layers offered by the `SingleCellAlleleExperiment` object: 
+
+- non immune genes + immune genes
+- non immune genes + immune alleles
+- non immune genes + immune functional groups
+
+This allows the representation of immune genes at various levels, from alleles to genes to functionally-similar gene groups. 
+
+In addition, it enables the user to perform comprehensive analysis across different layers of immunologically-relevant annotation. **Different angles**
+
+It is important to create unique identifiers for each layer or run, otherwise, the results will be overwritten and saved incorrectly as `PCA`, for example.
+
+For simplicity, we here perform dimensionality reduction and clustering on gene level, i.e., using immune and non-immune genes, after choosing top 20% HVG:
+
+```{r, fig.width=10, fig.height=4, warning=FALSE}
+set.seed(42L)
+
+create_dim_red <- function(scae){
+  genes <- c(rownames(scae_subset(scae, "nonimmune")), rownames(scae_subset(scae, "immune_genes")))
+  gene_var <- modelGeneVar(scae[genes, ])
+  chosen_hvgs <- getTopHVGs(gene_var, prop=0.2)
+  scae <- runPCA(scae, subset_row=chosen_hvgs, name="PCA_g")
+  scae <- runUMAP(scae, dimred="PCA_g", name="UMAP_g")
+  scae <- runTSNE(scae, dimred="PCA_g", name="TSNE_g")
+  snn_graph <- buildSNNGraph(scae, k=50, use.dimred='PCA_g')
+  igraph_clusters <- igraph::cluster_louvain(snn_graph)$membership
+  scae$cluster_id <- as.factor(igraph_clusters)
+  return(scae)
+}
+
+plot_dim_red <- function(scae){
+  p1 <- plotUMAP(scae, colour_by="cluster_id", dimred="UMAP_g") + 
+    theme_bw() +
+    theme(axis.title.x = element_text(size = 8),
+          axis.title.y = element_text(size = 8),
+          legend.title = element_text(size = 8))
+  
+  p2 <- plotTSNE(scae, colour_by="cluster_id", dimred="TSNE_g") +
+    theme_bw() +
+    theme(axis.title.x = element_text(size = 8),
+          axis.title.y = element_text(size = 8),
+          legend.title = element_text(size = 8))
+  
+  p <- plot_grid(p1, p2, ncol = 2)
+  print(p)
+  cat("\n")
+}
+
+scae <- create_dim_red(scae)
+plot_dim_red(scae)
+```
+
+### Visualization of HLA/immune features
+
+#### Example of a gene and its alleles
+
+This type of representation helps us determine which of the two alleles has a greater influence on the gene's expression:
+
+```{r, message=FALSE, fig.width=12, fig.height=4}
+p1 <- plotReducedDim(scae, dimred = "TSNE_g", by_exprs_values = "logcounts", colour_by = "HLA-DQA1") + theme_bw() + theme(legend.position="bottom") +
+  scale_colour_gradient2(name = "HLA-DQA1", low = "lightblue", mid = "lightblue", high = "darkred", na.value = "gray80", guide = "colourbar")
+
+p2 <- plotReducedDim(scae, dimred = "TSNE_g", by_exprs_values = "logcounts", colour_by = "DQA1*01:03:01:01") + theme_bw() + theme(legend.position="bottom") +
+  scale_colour_gradient2(name = "DQA1*01:03:01:01", low = "lightblue", mid = "lightblue", high = "darkred", na.value = "gray80", guide = "colourbar")
+
+p3 <- plotReducedDim(scae, dimred = "TSNE_g", by_exprs_values = "logcounts", colour_by = "DQA1*02:01") + theme_bw() + theme(legend.position="bottom") +
+  scale_colour_gradient2(name = "DQA1*02:01", low = "lightblue", mid = "lightblue", high = "darkred", na.value = "gray80", guide = "colourbar")
+
+plot_grid(plotlist = list(p1, p2, p3), ncol = 3, labels = c("A", "B", "C"))
+```
+
+#### tSNE
+
+This helps us identify the clusters or regions where immune features are expressed the most:
+
+```{r, message=FALSE, fig.width=12, fig.height=24}
+tsne_list <- list()
+
+p1 <- plotTSNE(scae, colour_by="cluster_id", dimred="TSNE_g") + theme_bw()
+tsne_list <- c(tsne_list, list(p1))
+
+immune_features <- grep("^ENS", rownames(scae), invert=TRUE, value=TRUE)
+for (feature in immune_features){
+  p2 <- plotReducedDim(scae, dimred = "TSNE_g", by_exprs_values = "logcounts", colour_by = feature) + theme_bw() +
+    scale_colour_gradient2(name = feature, low = "lightblue", mid = "lightblue", high = "darkred", na.value = "gray80", guide = "colourbar")
+  tsne_list <- c(tsne_list, list(p2))
+}
+
+plot_grid(plotlist = tsne_list, ncol = 3)
+```
+
+#### Violin plots
+
+Violin plots allow us to identify differences in allele expression within each cluster:
+
+```{r, fig.width=12, fig.height=8}
+alleles <- rownames(scae_subset(scae, "alleles"))
+
+plotExpression(scae, alleles, other_fields="cluster_id") +
+  facet_wrap(~cluster_id) +
+  theme_bw() +
+  theme(axis.text = element_text(size = 5),
+        axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+#### Heatmaps
+
+Heatmaps enable us to identify upregulated or downregulated alleles across all clusters:
+
+```{r, fig.width=12}
+plotGroupedHeatmap(scae, features=alleles, group="cluster_id",
+                   center=TRUE, scale=FALSE, cluster_rows=FALSE,
+                   treeheight_col=5, fontsize=8)
+```
+
+#### Bar plots
+
+Comparison of allele frequencies: HLA class I
+
+```{r, message=FALSE, warning=FALSE, fig.width=12, fig.height=4}
+class_I <- grep("^A|^B|^C", rownames(scae_subset(scae, "alleles")), value = TRUE)
+class_I_counts <- assay(scae[class_I, ], "logcounts")
+class_I_df <- as.data.frame(as.table(as.matrix(class_I_counts)))
+colnames(class_I_df) <- c("Allele", "Cell", "Count")
+class_I_df$Cluster <- colData(scae)$cluster_id[match(class_I_df$Cell, colnames(scae))]
+class_I_counts_by_cluster <- class_I_df %>%
+  group_by(Cluster, Allele) %>%
+  summarize(Total_Count = sum(Count))
+
+ggplot(class_I_counts_by_cluster, aes(x = factor(Cluster), y = Total_Count, fill = Allele)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_minimal() +
+  labs(x = "cluster",
+       y = "total allele count (logcounts)") +
+  theme(axis.text.x = element_text(hjust = 1))
+```
+
+Comparison of allele frequencies: HLA class II
+
+```{r, message=FALSE, warning=FALSE, fig.width=12, fig.height=4}
+class_II <- grep("^DRB1|^DPB1|^DQA1|^DQB1", rownames(scae_subset(scae, "alleles")), value = TRUE)
+class_II_counts <- assay(scae[class_II, ], "logcounts")
+class_II_df <- as.data.frame(as.table(as.matrix(class_II_counts)))
+colnames(class_II_df) <- c("Allele", "Cell", "Count")
+class_II_df$Cluster <- colData(scae)$cluster_id[match(class_II_df$Cell, colnames(scae))]
+class_II_counts_by_cluster <- class_II_df %>%
+  group_by(Cluster, Allele) %>%
+  summarize(Total_Count = sum(Count))
+
+ggplot(class_II_counts_by_cluster, aes(x = factor(Cluster), y = Total_Count, fill = Allele)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_minimal() +
+  labs(x = "cluster",
+       y = "total allele count (logcounts)") +
+  theme(axis.text.x = element_text(hjust = 1))
+```
+
+## Additional
+
+Since the `scae` object extends the `sce` object, it is compatible with the `Biocpkg("iSEE")` package for interactive data exploration.
+
+# Session
+
+```{r}
+sessionInfo()
+```
