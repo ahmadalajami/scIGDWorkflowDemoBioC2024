@@ -323,7 +323,7 @@ chosen_hvgs <- getTopHVGs(gene_var, prop=0.2)
 ```
 
 ```{r}
-scae <- runPCA(scae, subset_row=chosen_hvgs, name="PCA_g")
+scae <- scater::runPCA(scae, subset_row=chosen_hvgs, name="PCA_g")
 ```
 
 ```{r}
