@@ -32,7 +32,8 @@ Imports:
     DropletUtils,
     gridExtra,
     cowplot,
-    pheatmap
+    pheatmap,
+    igraph
 Suggests: 
     knitr,
     rmarkdown,
