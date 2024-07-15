@@ -291,7 +291,7 @@ scae_feature <- c(scae_subset(scae, subset = "alleles") %>% rownames,
 plot_feature_expression(scae, scae_feature)
 ```
 
-## Downstream Analysis
+## Downstream analysis
 
 In this section, we provide insights into the various data layers of the `scae` object and offer guidance on performing HLA/immune gene expression analysis
 
