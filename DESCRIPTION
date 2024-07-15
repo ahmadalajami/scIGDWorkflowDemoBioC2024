@@ -27,16 +27,12 @@ Imports:
     scater,
     scuttle,
     tidyverse,
-    patchwork,
     org.Hs.eg.db,
     AnnotationDbi,
     DropletUtils,
     gridExtra,
-    scDblFinder,
     cowplot,
-    pheatmap,
-    CATALYST,
-    SingleR
+    pheatmap
 Suggests: 
     knitr,
     rmarkdown,
