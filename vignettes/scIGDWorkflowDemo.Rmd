@@ -233,7 +233,6 @@ plot_total_counts(scae)
 Removing all features that have a total count less than 5; with the exception of all HLA/immune features - these are retained
 
 ```{r}
-rownames(scae) <- sub("\\..*", "", rownames(scae))
 '%nin%' <- Negate('%in%')
 
 filter_features <- function(scae){
@@ -310,6 +309,42 @@ In addition, it enables the user to perform comprehensive analysis across differ
 It is important to create unique identifiers for each layer or run, otherwise, the results will be overwritten and saved incorrectly as `PCA`, for example.
 
 For simplicity, we here perform dimensionality reduction and clustering on gene level, i.e., using immune and non-immune genes, after choosing top 20% HVG:
+
+```{r}
+genes <- c(rownames(scae_subset(scae, "nonimmune")), rownames(scae_subset(scae, "immune_genes")))
+```
+
+```{r}
+gene_var <- modelGeneVar(scae[genes, ])
+```
+
+```{r}
+chosen_hvgs <- getTopHVGs(gene_var, prop=0.2)
+```
+
+```{r}
+scae <- runPCA(scae, subset_row=chosen_hvgs, name="PCA_g")
+```
+
+```{r}
+scae <- runUMAP(scae, dimred="PCA_g", name="UMAP_g")
+```
+
+```{r}
+scae <- runTSNE(scae, dimred="PCA_g", name="TSNE_g")
+```
+
+```{r}
+snn_graph <- buildSNNGraph(scae, k=50, use.dimred='PCA_g')
+```
+
+```{r}
+igraph_clusters <- igraph::cluster_louvain(snn_graph)$membership
+```
+
+```{r}
+scae$cluster_id <- as.factor(igraph_clusters)
+```
 
 ```{r, fig.width=10, fig.height=4, warning=FALSE}
 set.seed(42L)
