@@ -328,7 +328,7 @@ scae <- scae[unique(c(chosen_hvgs, immune_features)), ]
 ```
 
 ```{r}
-scae <- runPCA(scae, name="PCA_g")
+scae <- runPCA(scae, subset_row=chosen_hvgs, name="PCA_g")
 ```
 
 ```{r}
