@@ -323,7 +323,7 @@ For simplicity, we here perform dimensionality reduction and clustering on gene 
 ```
 
 ```{r}
-scae <- scae[1:10000,]
+scae <- scae[1:1000,]
 ```
 
 ```{r}
@@ -331,7 +331,7 @@ scae <- runPCA(scae, name="PCA_g")
 ```
 
 ```{r}
-scae <- runUMAP(scae, dimred="PCA_g", name="UMAP_g")
+scae <- runUMAP(scae, dimred="PCA", name="UMAP_g")
 ```
 
 ```{r}
