@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>An Example Workshop • scIGDWorkflowDemoBioC2024</title>
+<title>scIGD: Unraveling Immunogenomic Diversity in Single-Cell Data • scIGDWorkflowDemoBioC2024</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="An Example Workshop">
+<script src="../pkgdown.js"></script><meta property="og:title" content="scIGD: Unraveling Immunogenomic Diversity in Single-Cell Data">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -49,7 +49,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/scIGDWorkflowDemo.html">An Example Workshop</a>
+      <a href="../articles/scIGDWorkflowDemo.html">scIGD: Unraveling Immunogenomic Diversity in Single-Cell Data</a>
     </li>
   </ul>
 </li>
@@ -74,8 +74,11 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>An Example Workshop</h1>
-                        <h4 data-toc-skip class="author">Sean Davis<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
+      <h1 data-toc-skip>scIGD: Unraveling Immunogenomic Diversity in
+Single-Cell Data</h1>
+                        <h4 data-toc-skip class="author">Ahmad Al
+Ajami<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>,
+Jonas Schuck<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, Federico Marini<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>, Katharina Imkeller<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
 </h4>
             
       
@@ -87,57 +90,79 @@
     
     
 <div class="section level2">
-<h2 id="workshop-title">Workshop Title<a class="anchor" aria-label="anchor" href="#workshop-title"></a>
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>Authors: Author Name<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, Another Author<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. <br> Last modified:
-14 May, 2018.</p>
+<p>The human immune system is governed by a complex interplay of
+molecules encoded by highly diverse genetic loci. Immune genes such as B
+and T cell receptors, human leukocyte antigens (HLAs), and killer
+Ig-like receptors (KIRs) exhibit remarkable allelic diversity across
+populations. However, conventional single-cell analysis methods often
+overlook this diversity, leading to erroneous quantification of immune
+mediators and compromised inter-donor comparability.</p>
 <div class="section level3">
-<h3 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+<h3 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
 </h3>
-<div class="section level4">
-<h4 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
-</h4>
-<p>Along with the topic of your workshop, include how students can
-expect to spend their time. For the description may also include
-information about what type of workshop it is (e.g. instructor-led live
-demo, lab, lecture + lab, etc.). Instructors are strongly recommended to
-provide completely worked examples for lab sessions, and a set of
-stand-alone notes that can be read and understood outside of the
-workshop.</p>
+<p>To address these challenges and unlock deeper insights from
+single-cell studies, we present a comprehensive workflow comprising two
+software and one data packages:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong><a href="https://github.com/AGImkeller/scIGD" class="external-link">scIGD</a></strong>
+(<strong>s</strong>ingle-<strong>c</strong>ell
+<strong>I</strong>mmuno<strong>G</strong>enomic
+<strong>D</strong>iversity): A Snakemake workflow designed to automate
+allele-typing processes for immune genes, with a focus on key targets
+like HLAs. In addition, it facilitates allele-specific quantification
+from scRNA-seq data using donor-specific references.</p></li>
+<li><p><strong><a href="https://bioconductor.org/packages/SingleCellAlleleExperiment" class="external-link">SingleCellAlleleExperiment</a></strong>:
+This R/Bioconductor package maximizes the analytical potential of
+results obtained from <em>scIGD</em>. It offers a versatile multi-layer
+data structure, allowing representation of immune genes at various
+levels, from alleles to genes to functionally similar gene groups. This
+enables comprehensive analysis across different layers of
+immunologically-relevant annotation.</p></li>
+<li><p><strong><a href="https://bioconductor.org/packages/scaeData" class="external-link">scaeData</a></strong>:
+An R/ExperimentHub data package housing three 10x datasets processed by
+<em>scIGD</em>. These datasets can be utilized to perform exploratory
+and downstream analysis using the novel
+<em>SingleCellAlleleExperiment</em> data structure.</p></li>
+</ol>
 </div>
-<div class="section level4">
-<h4 id="pre-requisites">Pre-requisites<a class="anchor" aria-label="anchor" href="#pre-requisites"></a>
-</h4>
-<p>List any workshop prerequisites, for example:</p>
+<div class="section level3">
+<h3 id="pre-requisites">Pre-requisites<a class="anchor" aria-label="anchor" href="#pre-requisites"></a>
+</h3>
 <ul>
 <li>Basic knowledge of R syntax</li>
-<li>Familiarity with the GenomicRanges class</li>
-<li>Familiarity with xyz vignette (provide link)</li>
-</ul>
-<p>List relevant background reading for the workshop, including any
-theoretical background you expect students to have.</p>
-<ul>
-<li>List any textbooks, papers, or other reading that students should be
-familiar with. Include direct links where possible.</li>
+<li>Familiarity with single-cell transcriptomic analyses, such as <em><a href="https://bioconductor.org/books/OSCA" class="external-link">OSCA</a></em>
+</li>
+<li>Familiarity with <em><a href="https://bioconductor.org/packages/SingleCellExperiment" class="external-link">SingleCellExperiment</a></em>
+and/or <em><a href="https://bioconductor.org/packages/SummarizedExperiment" class="external-link">SummarizedExperiment</a></em>
+</li>
 </ul>
 </div>
-<div class="section level4">
-<h4 id="participation">Participation<a class="anchor" aria-label="anchor" href="#participation"></a>
-</h4>
-<p>Describe how students will be expected to participate in the
-workshop.</p>
+<div class="section level3">
+<h3 id="participation">Participation<a class="anchor" aria-label="anchor" href="#participation"></a>
+</h3>
+<p>The format is a 45 minute session consisting of hands-on demos,
+exercises and Q&amp;A.</p>
+<p>Questions are welcome at any time. Contact details are listed at the
+bottom of the page.</p>
 </div>
-<div class="section level4">
-<h4 id="r-bioconductor-packages-used">
+<div class="section level3">
+<h3 id="r-bioconductor-packages-used">
 <em>R</em> / <em>Bioconductor</em> packages used<a class="anchor" aria-label="anchor" href="#r-bioconductor-packages-used"></a>
-</h4>
-<p>List any <em>R</em> / <em>Bioconductor</em> packages that will be
-explicitly covered.</p>
+</h3>
+<ul>
+<li>
+<code>SingleCellAlleleExperiment</code>: <a href="https://bioconductor.org/packages/SingleCellAlleleExperiment" class="external-link uri">https://bioconductor.org/packages/SingleCellAlleleExperiment</a>
+</li>
+<li>
+<code>scaeData</code>: <a href="https://bioconductor.org/packages/scaeData" class="external-link uri">https://bioconductor.org/packages/scaeData</a>
+</li>
+</ul>
 </div>
-<div class="section level4">
-<h4 id="time-outline">Time outline<a class="anchor" aria-label="anchor" href="#time-outline"></a>
-</h4>
-<p>An example for a 45-minute workshop:</p>
+<div class="section level3">
+<h3 id="time-outline">Time outline<a class="anchor" aria-label="anchor" href="#time-outline"></a>
+</h3>
 <table class="table">
 <thead><tr class="header">
 <th>Activity</th>
@@ -145,76 +170,769 @@ explicitly covered.</p>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>Packages</td>
-<td>15m</td>
+<td>Introduction</td>
+<td>10m</td>
 </tr>
 <tr class="even">
-<td>Package Development</td>
-<td>15m</td>
+<td>Overview of scIGD</td>
+<td>5m</td>
 </tr>
 <tr class="odd">
-<td>Contributing to Bioconductor</td>
+<td>Overview of scaeData</td>
 <td>5m</td>
 </tr>
 <tr class="even">
-<td>Best Practices</td>
-<td>10m</td>
+<td>SingleCellAlleleExperiment + data analysis</td>
+<td>25m</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section level4">
-<h4 id="workshop-goals-and-objectives">Workshop goals and objectives<a class="anchor" aria-label="anchor" href="#workshop-goals-and-objectives"></a>
-</h4>
-<p>List “big picture” student-centered workshop goals and learning
-objectives. Learning goals and objectives are related, but not the same
-thing. These goals and objectives will help some people to decide
-whether to attend the conference for training purposes, so please make
-these as precise and accurate as possible.</p>
-<p><em>Learning goals</em> are high-level descriptions of what
-participants will learn and be able to do after the workshop is over.
-<em>Learning objectives</em>, on the other hand, describe in very
-specific and measurable terms specific skills or knowledge attained. The
-<a href="#bloom">Bloom’s Taxonomy</a> may be a useful framework for
-defining and describing your goals and objectives, although there are
-others.</p>
-</div>
+<div class="section level3">
+<h3 id="demo-goals-and-objectives">Demo goals and objectives<a class="anchor" aria-label="anchor" href="#demo-goals-and-objectives"></a>
+</h3>
 <div class="section level4">
 <h4 id="learning-goals">Learning goals<a class="anchor" aria-label="anchor" href="#learning-goals"></a>
 </h4>
-<p>Some examples:</p>
 <ul>
-<li>describe how to…</li>
-<li>identify methods for…</li>
-<li>understand the difference between…</li>
+<li>Learn the constraints inherent in traditional single-cell analysis
+techniques and the importance of HLA allele-specific quantification</li>
+<li>Understand the difference between <code>SingleCellExperiment</code>
+and <code>SingleCellAlleleExperiment</code>
+</li>
+<li>Demonstrate how these tools can be applied and adopted to enhance
+existing workflows</li>
 </ul>
 </div>
 <div class="section level4">
 <h4 id="learning-objectives">Learning objectives<a class="anchor" aria-label="anchor" href="#learning-objectives"></a>
 </h4>
 <ul>
-<li>analyze xyz data to produce…</li>
-<li>create xyz plots</li>
-<li>evaluate xyz data for artifacts</li>
+<li>Perform allele typing to identify HLA alleles from genetic sequences
+in scRNA-seq data</li>
+<li>Achieve allele-specific quantification using donor-specific
+references</li>
+<li>Navigate through distinct layers within the data object for diverse
+representations of HLA genes</li>
+<li>Conduct exploratory data and downstream analyses across any of the
+layers offered by the data object</li>
 </ul>
 </div>
 </div>
-<div class="section level3">
-<h3 id="workshop">Workshop<a class="anchor" aria-label="anchor" href="#workshop"></a>
-</h3>
-<p>Divide the workshop into sections (<code>## A Section</code>).
-Include fully-evaluated <em>R</em> code chunks. Develop exercises and
-solutions, and anticipate that your audience will walk through the code
-with you, or work on the code idependently – do not be too ambitious in
-the material that you present.</p>
 </div>
+<div class="section level2">
+<h2 id="workflow-demo">Workflow demo<a class="anchor" aria-label="anchor" href="#workflow-demo"></a>
+</h2>
+<p>We start by loading the packages that will be used in this demo</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">{</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/AGImkeller/SingleCellAlleleExperiment" class="external-link">SingleCellAlleleExperiment</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/AGImkeller/scaeData" class="external-link">scaeData</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">gridExtra</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">DropletUtils</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://Matrix.R-forge.R-project.org" class="external-link">Matrix</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/cowplot/" class="external-link">cowplot</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">scran</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://bioconductor.org/packages/scater/" class="external-link">scater</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">pheatmap</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="loading-data">Loading data<a class="anchor" aria-label="anchor" href="#loading-data"></a>
+</h3>
+<p><code>scaeData</code> consists of 3 single-cell RNA-sequencing
+datasets that were sourced from publicly available datasets provided by
+10x Genomics, and processed using <code>scIGD</code>:</p>
+<ul>
+<li><p><code>pbmc_5k</code>: 5k Peripheral Blood Mononuclear Cells
+(PBMCs) from a Healthy Donor (v3 chemistry)</p></li>
+<li><p><code>pbmc_10k</code>: 10k Human PBMCs, 3’ v3.1, Chromium
+Controller</p></li>
+<li><p><code>pbmc_20k</code>: 20k Human PBMCs, 3’ HT v3.1, Chromium
+X</p></li>
+</ul>
+<p>The <code><a href="https://rdrr.io/pkg/scaeData/man/scaeDataGet.html" class="external-link">scaeDataGet()</a></code> function returns a list with four
+elements. The <code>dir</code> element specifies the directory where
+files downloaded from <code>ExperimentHub</code> are stored on your
+device. The remaining three elements, <code>barcodes</code>,
+<code>features</code>, and <code>matrix</code>, contain the
+corresponding file names as named by <code>ExperimentHub</code>. This
+list is then used to provide the necessary information for the related
+parameters in <code>SingleCellAlleleExperiment</code></p>
+<p>Here, let’s view <code>pbmc_20k</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scaeData/man/scaeDataGet.html" class="external-link">scaeDataGet</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="st">"pbmc_20k"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Retrieving barcode identifiers for **pbmc 20k** dataset...DONE</span></span>
+<span><span class="co">#&gt; Retrieving feature identifiers for **pbmc 20k** dataset...DONE</span></span>
+<span><span class="co">#&gt; Retrieving quantification matrix for **pbmc 20k** dataset...DONE</span></span>
+<span></span>
+<span><span class="va">cells.dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">dir</span>, <span class="va">data</span><span class="op">$</span><span class="va">barcodes</span><span class="op">)</span></span>
+<span><span class="va">features.dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">dir</span>, <span class="va">data</span><span class="op">$</span><span class="va">features</span><span class="op">)</span></span>
+<span><span class="va">mat.dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">dir</span>, <span class="va">data</span><span class="op">$</span><span class="va">matrix</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cells</span> <span class="op">&lt;-</span> <span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">cells.dir</span>, sep <span class="op">=</span> <span class="st">""</span>, header <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">features</span> <span class="op">&lt;-</span> <span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.delim</a></span><span class="op">(</span><span class="va">features.dir</span>, header <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">mat</span> <span class="op">&lt;-</span> <span class="fu">Matrix</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/externalFormats.html" class="external-link">readMM</a></span><span class="op">(</span><span class="va">mat.dir</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">cells</span><span class="op">$</span><span class="va">V1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">features</span><span class="op">$</span><span class="va">V1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 6 x 62760 sparse Matrix of class "dgTMatrix"</span></span>
+<span><span class="co">#&gt;   [[ suppressing 34 column names 'ENSG00000279928.2', 'ENSG00000228037.1', 'ENSG00000142611.17' ... ]]</span></span>
+<span><span class="co">#&gt;                                                                               </span></span>
+<span><span class="co">#&gt; AAACCCAAGAAACACT . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</span></span>
+<span><span class="co">#&gt; AAACCCAAGAAACTCA . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</span></span>
+<span><span class="co">#&gt; AAACCCAAGAAACTGT . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</span></span>
+<span><span class="co">#&gt; AAACCCAAGAAATTGC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</span></span>
+<span><span class="co">#&gt; AAACCCAAGAACAAGG . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</span></span>
+<span><span class="co">#&gt; AAACCCAAGAACAGGA . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</span></span>
+<span><span class="co">#&gt;                              </span></span>
+<span><span class="co">#&gt; AAACCCAAGAAACACT . . . ......</span></span>
+<span><span class="co">#&gt; AAACCCAAGAAACTCA . . . ......</span></span>
+<span><span class="co">#&gt; AAACCCAAGAAACTGT . . . ......</span></span>
+<span><span class="co">#&gt; AAACCCAAGAAATTGC . . . ......</span></span>
+<span><span class="co">#&gt; AAACCCAAGAACAAGG . . . ......</span></span>
+<span><span class="co">#&gt; AAACCCAAGAACAGGA . . . ......</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  .....suppressing 62726 columns in show(); maybe adjust options(max.print=, width=)</span></span>
+<span><span class="co">#&gt;  ..............................</span></span></code></pre></div>
+<p>A lookup table corresponding to each dataset, facilitating the
+creation of relevant additional data layers during object generation,
+can be accessed from the package’s extdata:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lookup</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"pbmc_20k_lookup_table.csv"</span>, package<span class="op">=</span><span class="st">"scaeData"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">lookup</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          Allele  Gene    Function</span></span>
+<span><span class="co">#&gt; 1 A*02:01:01:01 HLA-A HLA_class_I</span></span>
+<span><span class="co">#&gt; 2 A*24:02:01:01 HLA-A HLA_class_I</span></span>
+<span><span class="co">#&gt; 3 B*15:01:01:01 HLA-B HLA_class_I</span></span>
+<span><span class="co">#&gt; 4    B*44:03:01 HLA-B HLA_class_I</span></span>
+<span><span class="co">#&gt; 5    C*03:03:01 HLA-C HLA_class_I</span></span>
+<span><span class="co">#&gt; 6    C*16:01:01 HLA-C HLA_class_I</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="singlecellalleleexperiment">SingleCellAlleleExperiment<a class="anchor" aria-label="anchor" href="#singlecellalleleexperiment"></a>
+</h3>
+<p>We proceed to generate a <code>SingleCellAlleleExperiment</code>
+object.</p>
+<p>The read-in function <code><a href="https://rdrr.io/pkg/SingleCellAlleleExperiment/man/read_allele_counts.html" class="external-link">read_allele_counts()</a></code> is used to
+read in the data and generate a <code>scae</code> object.</p>
+<p>When using your own data generated by <code>scIGD</code>, state the
+path containing all expected files to the <code>sample_dir</code>
+parameter in the <code><a href="https://rdrr.io/pkg/SingleCellAlleleExperiment/man/read_allele_counts.html" class="external-link">read_allele_counts()</a></code> function and the
+corresponding <code>lookup table</code>. In case you renamed the files,
+specify the new file identifiers in the corresponding parameters
+<code>lookup_file</code>, <code>barcode_file</code>,
+<code>gene_file</code>, and <code>matrix_file</code>, otherwise leave
+them to the stated default values.</p>
+<p><code>filter_mode="no"</code>: default value. This performs filtering
+based on <code>threshold=0</code> - filtering out columns (aka cells)
+with a count sum of 0 over all rows (aka features).</p>
+<p><code>filter_mode="yes"</code>: performs advanced filtering on the
+computed inflection point of a knee plot based on barcode ranks. The
+information to the corresponding plot including the inflection point
+used for filtering is stored in
+<code>metadata(scae)[["knee_info"]]</code>.</p>
+<p><code>filter_mode="custom"</code>: enables custom filtering based on
+a threshold specified in the <code>filter_threshold</code> parameter.
+This is particularly useful if, after examining the knee plot with
+<code>filter_mode="yes"</code>, you decide to use a different filter
+threshold.</p>
+<p><code>log=TRUE</code>: performs normalization on the raw counts -
+default value. Note that the count matrix is extended (additional rows
+are added) during object generation. It is crucial to compute size
+factors only on data layers present in the raw data (non-immune and
+alleles). Otherwise, immune features would contribute to the size
+factors multiple times and thus, the size factors would be
+incorrect.</p>
+<p><code>gene_symbols=TRUE</code>: adds the corresponding gene symbols
+of the ENSEMBL ids to <code>rowData</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">scae</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleCellAlleleExperiment/man/read_allele_counts.html" class="external-link">read_allele_counts</a></span><span class="op">(</span>samples_dir<span class="op">=</span><span class="va">data</span><span class="op">$</span><span class="va">dir</span>,</span>
+<span>                           barcode_file<span class="op">=</span><span class="va">data</span><span class="op">$</span><span class="va">barcodes</span>,</span>
+<span>                           gene_file<span class="op">=</span><span class="va">data</span><span class="op">$</span><span class="va">features</span>,</span>
+<span>                           matrix_file<span class="op">=</span><span class="va">data</span><span class="op">$</span><span class="va">matrix</span>,</span>
+<span>                           lookup_file<span class="op">=</span><span class="va">lookup</span>,</span>
+<span>                           filter_mode<span class="op">=</span><span class="st">"yes"</span>,</span>
+<span>                           log<span class="op">=</span><span class="cn">TRUE</span>,</span>
+<span>                           gene_symbols<span class="op">=</span><span class="cn">TRUE</span>,</span>
+<span>                           sample_names<span class="op">=</span><span class="st">"example_data"</span>,</span>
+<span>                           verbose<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Filtering performed based on the inflection point at: 1110 UMI counts.</span></span>
+<span><span class="co">#&gt; Data Read_in completed</span></span>
+<span><span class="co">#&gt; Using org.Hs to retrieve NCBI gene identifiers.</span></span>
+<span><span class="co">#&gt;   Generating SCAE object: Extending rowData with new classifiers</span></span>
+<span><span class="co">#&gt;   Generating SCAE object: Filtering at 1110 UMI counts.</span></span>
+<span><span class="co">#&gt;   Generating SCAE object: Compute Library Factors before adding new layers</span></span>
+<span><span class="co">#&gt;   Generating SCAE object: Aggregating alleles corresponding to the same gene</span></span>
+<span><span class="co">#&gt;   Generating SCAE object: Aggregating genes corresponding to the same functional groups</span></span>
+<span><span class="co">#&gt;   Generating SCAE object: Generate logcounts assay using Library Factors</span></span>
+<span><span class="co">#&gt; SingleCellAlleleExperiment object completed</span></span>
+<span></span>
+<span><span class="va">scae</span></span>
+<span><span class="co">#&gt; class: SingleCellAlleleExperiment </span></span>
+<span><span class="co">#&gt; dim: 62769 23767 </span></span>
+<span><span class="co">#&gt; metadata(1): knee_info</span></span>
+<span><span class="co">#&gt; assays(2): counts logcounts</span></span>
+<span><span class="co">#&gt; rownames(62769): ENSG00000279928.2 ENSG00000228037.1 ... HLA_class_I</span></span>
+<span><span class="co">#&gt;   HLA_class_II</span></span>
+<span><span class="co">#&gt; rowData names(4): Ensembl_ID NI_I Quant_type Symbol</span></span>
+<span><span class="co">#&gt; colnames(23767): AAACCCAAGAGCAGCT AAACCCACAATACCTG ... TTTGTTGTCCGATGTA</span></span>
+<span><span class="co">#&gt;   TTTGTTGTCGTGGCTG</span></span>
+<span><span class="co">#&gt; colData names(3): Sample Barcode sizeFactor</span></span>
+<span><span class="co">#&gt; reducedDimNames(0):</span></span>
+<span><span class="co">#&gt; mainExpName: NULL</span></span>
+<span><span class="co">#&gt; altExpNames(0):</span></span>
+<span><span class="co">#&gt; ---------------</span></span>
+<span><span class="co">#&gt; Including a total of 23 immune related features:</span></span>
+<span><span class="co">#&gt; Allele-level information (14): A*02:01:01:01 A*24:02:01:01 ...</span></span>
+<span><span class="co">#&gt;   DQB1*02:02 DQB1*06:03:01</span></span>
+<span><span class="co">#&gt; Immune genes (7): HLA-A HLA-B ... HLA-DQA1 HLA-DQB1</span></span>
+<span><span class="co">#&gt; Functional level information (2): HLA_class_I HLA_class_II</span></span>
+<span></span>
+<span><span class="co"># when using your own data generated by scIGD, you only have to populate `samples_dir` with the folder path. All of `barcode_file`, `gene_file` and `matrix_file` can be left untouched.</span></span></code></pre></div>
+<div class="section level4">
+<h4 id="showcasing-content-of-object-slots">Showcasing content of object slots<a class="anchor" aria-label="anchor" href="#showcasing-content-of-object-slots"></a>
+</h4>
+<div class="section level5">
+<h5 id="rowdata">rowData<a class="anchor" aria-label="anchor" href="#rowdata"></a>
+</h5>
+<p>Two new classification columns are introduced in the
+<code>rowData</code> slot. Namely, the <code>NI_I</code> column
+(classification of each row as <code>NI=non_immune</code> or
+<code>I=immune</code>) and <code>Quant_type</code> column
+(classification of each row to its corresponding data layer). Both
+columns are used jointly to match each row in the object to its
+corresponding data layer:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">rowData</span><span class="op">(</span><span class="va">scae</span><span class="op">)</span></span>
+<span><span class="co">#&gt; DataFrame with 62769 rows and 4 columns</span></span>
+<span><span class="co">#&gt;                            Ensembl_ID        NI_I  Quant_type       Symbol</span></span>
+<span><span class="co">#&gt;                           &lt;character&gt; &lt;character&gt; &lt;character&gt;  &lt;character&gt;</span></span>
+<span><span class="co">#&gt; ENSG00000279928.2   ENSG00000279928.2          NI           G           NA</span></span>
+<span><span class="co">#&gt; ENSG00000228037.1   ENSG00000228037.1          NI           G LOC100996583</span></span>
+<span><span class="co">#&gt; ENSG00000142611.17 ENSG00000142611.17          NI           G       PRDM16</span></span>
+<span><span class="co">#&gt; ENSG00000284616.1   ENSG00000284616.1          NI           G           NA</span></span>
+<span><span class="co">#&gt; ENSG00000157911.11 ENSG00000157911.11          NI           G        PEX10</span></span>
+<span><span class="co">#&gt; ...                               ...         ...         ...          ...</span></span>
+<span><span class="co">#&gt; HLA-DPB1                     HLA-DPB1           I           G     HLA-DPB1</span></span>
+<span><span class="co">#&gt; HLA-DQA1                     HLA-DQA1           I           G     HLA-DQA1</span></span>
+<span><span class="co">#&gt; HLA-DQB1                     HLA-DQB1           I           G     HLA-DQB1</span></span>
+<span><span class="co">#&gt; HLA_class_I               HLA_class_I           I           F  HLA_class_I</span></span>
+<span><span class="co">#&gt; HLA_class_II             HLA_class_II           I           F HLA_class_II</span></span></code></pre></div>
+</div>
+<div class="section level5">
+<h5 id="coldata">colData<a class="anchor" aria-label="anchor" href="#coldata"></a>
+</h5>
+<p>Contains sample and barcode information. If the logcounts assay is
+computed, find another column containing the sizeFactors here:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">colData</span><span class="op">(</span><span class="va">scae</span><span class="op">)</span></span>
+<span><span class="co">#&gt; DataFrame with 23767 rows and 3 columns</span></span>
+<span><span class="co">#&gt;                        Sample          Barcode sizeFactor</span></span>
+<span><span class="co">#&gt;                   &lt;character&gt;      &lt;character&gt;  &lt;numeric&gt;</span></span>
+<span><span class="co">#&gt; AAACCCAAGAGCAGCT example_data AAACCCAAGAGCAGCT    1.17301</span></span>
+<span><span class="co">#&gt; AAACCCACAATACCTG example_data AAACCCACAATACCTG    0.75794</span></span>
+<span><span class="co">#&gt; AAACCCACACAACCGC example_data AAACCCACACAACCGC    1.12619</span></span>
+<span><span class="co">#&gt; AAACCCACACACAGAG example_data AAACCCACACACAGAG    2.88660</span></span>
+<span><span class="co">#&gt; AAACCCACAGATCATC example_data AAACCCACAGATCATC    1.56618</span></span>
+<span><span class="co">#&gt; ...                       ...              ...        ...</span></span>
+<span><span class="co">#&gt; TTTGTTGGTTCAAGGG example_data TTTGTTGGTTCAAGGG   0.660602</span></span>
+<span><span class="co">#&gt; TTTGTTGTCACCTGGG example_data TTTGTTGTCACCTGGG   0.667899</span></span>
+<span><span class="co">#&gt; TTTGTTGTCATTGAGC example_data TTTGTTGTCATTGAGC   0.808125</span></span>
+<span><span class="co">#&gt; TTTGTTGTCCGATGTA example_data TTTGTTGTCCGATGTA   1.615128</span></span>
+<span><span class="co">#&gt; TTTGTTGTCGTGGCTG example_data TTTGTTGTCGTGGCTG   0.585941</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level4">
+<h4 id="extracting-layer-specific-features">Extracting layer-specific features<a class="anchor" aria-label="anchor" href="#extracting-layer-specific-features"></a>
+</h4>
+<p>Getters are implemented to retrieve the different data layers
+integrated within the scae object.</p>
+<div class="section level5">
+<h5 id="non-immune-genes">Non-immune genes<a class="anchor" aria-label="anchor" href="#non-immune-genes"></a>
+</h5>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">scae_nonimmune_subset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleCellAlleleExperiment/man/scae_subset.html" class="external-link">scae_subset</a></span><span class="op">(</span><span class="va">scae</span>, <span class="st">"nonimmune"</span><span class="op">)</span></span>
+<span><span class="va">scae_nonimmune_subset</span></span>
+<span><span class="co">#&gt; class: SingleCellAlleleExperiment </span></span>
+<span><span class="co">#&gt; dim: 62746 23767 </span></span>
+<span><span class="co">#&gt; metadata(1): knee_info</span></span>
+<span><span class="co">#&gt; assays(2): counts logcounts</span></span>
+<span><span class="co">#&gt; rownames(62746): ENSG00000279928.2 ENSG00000228037.1 ...</span></span>
+<span><span class="co">#&gt;   ENSG00000277475.1 ENSG00000275405.1</span></span>
+<span><span class="co">#&gt; rowData names(4): Ensembl_ID NI_I Quant_type Symbol</span></span>
+<span><span class="co">#&gt; colnames(23767): AAACCCAAGAGCAGCT AAACCCACAATACCTG ... TTTGTTGTCCGATGTA</span></span>
+<span><span class="co">#&gt;   TTTGTTGTCGTGGCTG</span></span>
+<span><span class="co">#&gt; colData names(3): Sample Barcode sizeFactor</span></span>
+<span><span class="co">#&gt; reducedDimNames(0):</span></span>
+<span><span class="co">#&gt; mainExpName: NULL</span></span>
+<span><span class="co">#&gt; altExpNames(0):</span></span>
+<span><span class="co">#&gt; ---------------</span></span>
+<span><span class="co">#&gt; Including a total of 0 immune related features:</span></span>
+<span><span class="co">#&gt; Allele-level information (0):</span></span>
+<span><span class="co">#&gt; Immune genes (0):</span></span>
+<span><span class="co">#&gt; Functional level information (0):</span></span></code></pre></div>
+</div>
+<div class="section level5">
+<h5 id="alleles">Alleles<a class="anchor" aria-label="anchor" href="#alleles"></a>
+</h5>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">scae_alleles_subset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleCellAlleleExperiment/man/scae_subset.html" class="external-link">scae_subset</a></span><span class="op">(</span><span class="va">scae</span>, <span class="st">"alleles"</span><span class="op">)</span></span>
+<span><span class="va">scae_alleles_subset</span></span>
+<span><span class="co">#&gt; class: SingleCellAlleleExperiment </span></span>
+<span><span class="co">#&gt; dim: 14 23767 </span></span>
+<span><span class="co">#&gt; metadata(1): knee_info</span></span>
+<span><span class="co">#&gt; assays(2): counts logcounts</span></span>
+<span><span class="co">#&gt; rownames(14): A*02:01:01:01 A*24:02:01:01 ... DQB1*02:02 DQB1*06:03:01</span></span>
+<span><span class="co">#&gt; rowData names(4): Ensembl_ID NI_I Quant_type Symbol</span></span>
+<span><span class="co">#&gt; colnames(23767): AAACCCAAGAGCAGCT AAACCCACAATACCTG ... TTTGTTGTCCGATGTA</span></span>
+<span><span class="co">#&gt;   TTTGTTGTCGTGGCTG</span></span>
+<span><span class="co">#&gt; colData names(3): Sample Barcode sizeFactor</span></span>
+<span><span class="co">#&gt; reducedDimNames(0):</span></span>
+<span><span class="co">#&gt; mainExpName: NULL</span></span>
+<span><span class="co">#&gt; altExpNames(0):</span></span>
+<span><span class="co">#&gt; ---------------</span></span>
+<span><span class="co">#&gt; Including a total of 14 immune related features:</span></span>
+<span><span class="co">#&gt; Allele-level information (14): A*02:01:01:01 A*24:02:01:01 ...</span></span>
+<span><span class="co">#&gt;   DQB1*02:02 DQB1*06:03:01</span></span>
+<span><span class="co">#&gt; Immune genes (0):</span></span>
+<span><span class="co">#&gt; Functional level information (0):</span></span></code></pre></div>
+</div>
+<div class="section level5">
+<h5 id="hlaimmune-genes">HLA/Immune genes<a class="anchor" aria-label="anchor" href="#hlaimmune-genes"></a>
+</h5>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">scae_immune_subset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleCellAlleleExperiment/man/scae_subset.html" class="external-link">scae_subset</a></span><span class="op">(</span><span class="va">scae</span>, <span class="st">"immune_genes"</span><span class="op">)</span></span>
+<span><span class="va">scae_immune_subset</span></span>
+<span><span class="co">#&gt; class: SingleCellAlleleExperiment </span></span>
+<span><span class="co">#&gt; dim: 7 23767 </span></span>
+<span><span class="co">#&gt; metadata(1): knee_info</span></span>
+<span><span class="co">#&gt; assays(2): counts logcounts</span></span>
+<span><span class="co">#&gt; rownames(7): HLA-A HLA-B ... HLA-DQA1 HLA-DQB1</span></span>
+<span><span class="co">#&gt; rowData names(4): Ensembl_ID NI_I Quant_type Symbol</span></span>
+<span><span class="co">#&gt; colnames(23767): AAACCCAAGAGCAGCT AAACCCACAATACCTG ... TTTGTTGTCCGATGTA</span></span>
+<span><span class="co">#&gt;   TTTGTTGTCGTGGCTG</span></span>
+<span><span class="co">#&gt; colData names(3): Sample Barcode sizeFactor</span></span>
+<span><span class="co">#&gt; reducedDimNames(0):</span></span>
+<span><span class="co">#&gt; mainExpName: NULL</span></span>
+<span><span class="co">#&gt; altExpNames(0):</span></span>
+<span><span class="co">#&gt; ---------------</span></span>
+<span><span class="co">#&gt; Including a total of 7 immune related features:</span></span>
+<span><span class="co">#&gt; Allele-level information (0):</span></span>
+<span><span class="co">#&gt; Immune genes (7): HLA-A HLA-B ... HLA-DQA1 HLA-DQB1</span></span>
+<span><span class="co">#&gt; Functional level information (0):</span></span></code></pre></div>
+</div>
+<div class="section level5">
+<h5 id="functional-gene-groups">Functional gene groups<a class="anchor" aria-label="anchor" href="#functional-gene-groups"></a>
+</h5>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">scae_functional_groups_subset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleCellAlleleExperiment/man/scae_subset.html" class="external-link">scae_subset</a></span><span class="op">(</span><span class="va">scae</span>, <span class="st">"functional_groups"</span><span class="op">)</span></span>
+<span><span class="va">scae_functional_groups_subset</span></span>
+<span><span class="co">#&gt; class: SingleCellAlleleExperiment </span></span>
+<span><span class="co">#&gt; dim: 2 23767 </span></span>
+<span><span class="co">#&gt; metadata(1): knee_info</span></span>
+<span><span class="co">#&gt; assays(2): counts logcounts</span></span>
+<span><span class="co">#&gt; rownames(2): HLA_class_I HLA_class_II</span></span>
+<span><span class="co">#&gt; rowData names(4): Ensembl_ID NI_I Quant_type Symbol</span></span>
+<span><span class="co">#&gt; colnames(23767): AAACCCAAGAGCAGCT AAACCCACAATACCTG ... TTTGTTGTCCGATGTA</span></span>
+<span><span class="co">#&gt;   TTTGTTGTCGTGGCTG</span></span>
+<span><span class="co">#&gt; colData names(3): Sample Barcode sizeFactor</span></span>
+<span><span class="co">#&gt; reducedDimNames(0):</span></span>
+<span><span class="co">#&gt; mainExpName: NULL</span></span>
+<span><span class="co">#&gt; altExpNames(0):</span></span>
+<span><span class="co">#&gt; ---------------</span></span>
+<span><span class="co">#&gt; Including a total of 2 immune related features:</span></span>
+<span><span class="co">#&gt; Allele-level information (0):</span></span>
+<span><span class="co">#&gt; Immune genes (0):</span></span>
+<span><span class="co">#&gt; Functional level information (2): HLA_class_I HLA_class_II</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="pre-processing-workflow">Pre-processing workflow<a class="anchor" aria-label="anchor" href="#pre-processing-workflow"></a>
+</h3>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_total_counts</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">scae</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">total_counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/colSums-methods.html" class="external-link">colSums</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/dge.html" class="external-link">counts</a></span><span class="op">(</span><span class="va">scae</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Total_Counts <span class="op">=</span> <span class="va">total_counts</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Total_Counts</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1000</span>, fill <span class="op">=</span> <span class="st">"skyblue"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"total counts per cell"</span>,</span>
+<span>         y <span class="op">=</span> <span class="st">"number of cells"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">plot_total_counts</span><span class="op">(</span><span class="va">scae</span><span class="op">)</span></span></code></pre></div>
+<p><img src="scIGDWorkflowDemo_files/figure-html/unnamed-chunk-10-1.png" width="672"></p>
+<div class="section level4">
+<h4 id="feature-filtering">Feature filtering<a class="anchor" aria-label="anchor" href="#feature-filtering"></a>
+</h4>
+<p>Removing all features that have a total count less than 5; with the
+exception of all HLA/immune features - these are retained</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="st">'%nin%'</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/funprog.html" class="external-link">Negate</a></span><span class="op">(</span><span class="st">'%in%'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">filter_features</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">scae</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">immune_features</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"^ENS"</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">scae</span><span class="op">)</span>, invert<span class="op">=</span><span class="cn">TRUE</span>, value<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="va">other_genes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">scae</span><span class="op">)</span> <span class="op">%nin%</span> <span class="va">immune_features</span></span>
+<span>  </span>
+<span>  <span class="va">features_keep</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/colSums-methods.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/dge.html" class="external-link">counts</a></span><span class="op">(</span><span class="va">scae</span><span class="op">)</span><span class="op">[</span><span class="va">other_genes</span>, <span class="op">]</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">5</span></span>
+<span>  <span class="va">features_keep_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">features_keep</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="va">features_keep</span><span class="op">)</span><span class="op">]</span></span>
+<span>  <span class="va">scae</span> <span class="op">&lt;-</span> <span class="va">scae</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">features_keep_names</span>, <span class="va">immune_features</span><span class="op">)</span>, <span class="op">]</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">scae</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">scae</span> <span class="op">&lt;-</span> <span class="fu">filter_features</span><span class="op">(</span><span class="va">scae</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">scae</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 38026 23767</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="processing-workflow">Processing workflow<a class="anchor" aria-label="anchor" href="#processing-workflow"></a>
+</h3>
+<div class="section level4">
+<h4 id="normalization">Normalization<a class="anchor" aria-label="anchor" href="#normalization"></a>
+</h4>
+<p>The data is normalized upon creating the
+<em>SingleCellAlleleExperiment</em> object</p>
+</div>
+<div class="section level4">
+<h4 id="distribution-of-hlaimmune-features">Distribution of HLA/immune features<a class="anchor" aria-label="anchor" href="#distribution-of-hlaimmune-features"></a>
+</h4>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_allele_dist</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">scae</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">immune_features</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"^ENS"</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">scae</span><span class="op">)</span>, invert<span class="op">=</span><span class="cn">TRUE</span>, value<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">plot_grid</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">immune_features</span>, <span class="kw">function</span><span class="op">(</span><span class="va">feature</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/assays.html" class="external-link">logcounts</a></span><span class="op">(</span><span class="va">scae</span><span class="op">)</span><span class="op">[</span><span class="va">feature</span>, <span class="op">]</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/assays.html" class="external-link">logcounts</a></span><span class="op">(</span><span class="va">scae</span><span class="op">)</span><span class="op">[</span><span class="va">feature</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>color<span class="op">=</span><span class="st">"black"</span>,</span>
+<span>                     fill <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>                     breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span>, by<span class="op">=</span><span class="fl">0.10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">feature</span><span class="op">)</span> <span class="op">+</span></span>
+<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
+<span>            axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
+<span>            plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">)</span><span class="op">}</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">plot_allele_dist</span><span class="op">(</span><span class="va">scae</span><span class="op">)</span></span></code></pre></div>
+<p><img src="scIGDWorkflowDemo_files/figure-html/unnamed-chunk-12-1.png" width="960"></p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">plot_feature_expression</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">scae</span>, <span class="va">scae_feature</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/scater/man/plotExpression.html" class="external-link">plotExpression</a></span><span class="op">(</span><span class="va">scae</span>, <span class="va">scae_feature</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
+<span>          axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span>, face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>, </span>
+<span>          axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">scae_feature</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellAlleleExperiment/man/scae_subset.html" class="external-link">scae_subset</a></span><span class="op">(</span><span class="va">scae</span>, subset <span class="op">=</span> <span class="st">"alleles"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="va">rownames</span>,</span>
+<span>                  <span class="fu"><a href="https://rdrr.io/pkg/SingleCellAlleleExperiment/man/scae_subset.html" class="external-link">scae_subset</a></span><span class="op">(</span><span class="va">scae</span>, subset <span class="op">=</span> <span class="st">"immune_genes"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="va">rownames</span>,</span>
+<span>                  <span class="fu"><a href="https://rdrr.io/pkg/SingleCellAlleleExperiment/man/scae_subset.html" class="external-link">scae_subset</a></span><span class="op">(</span><span class="va">scae</span>, subset <span class="op">=</span> <span class="st">"functional_groups"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="va">rownames</span><span class="op">)</span></span>
+<span><span class="fu">plot_feature_expression</span><span class="op">(</span><span class="va">scae</span>, <span class="va">scae_feature</span><span class="op">)</span></span></code></pre></div>
+<p><img src="scIGDWorkflowDemo_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>
+</div>
+</div>
+<div class="section level3">
+<h3 id="downstream-analysis">Downstream analysis<a class="anchor" aria-label="anchor" href="#downstream-analysis"></a>
+</h3>
+<p>In this section, we provide insights into the various data layers of
+the <code>scae</code> object and offer guidance on performing HLA/immune
+gene expression analysis</p>
+<div class="section level4">
+<h4 id="dimensionality-reduction-clustering">Dimensionality reduction &amp; clustering<a class="anchor" aria-label="anchor" href="#dimensionality-reduction-clustering"></a>
+</h4>
+<p>PCA, UMAP, tSNE, and SNN graph can be computed/built using any of the
+three layers offered by the <code>SingleCellAlleleExperiment</code>
+object:</p>
+<ul>
+<li>non immune genes + immune genes</li>
+<li>non immune genes + immune alleles</li>
+<li>non immune genes + immune functional groups</li>
+</ul>
+<p>This allows the representation of immune genes at various levels,
+from alleles to genes to functionally-similar gene groups.</p>
+<p>In addition, it enables the user to perform comprehensive analysis
+across different layers of immunologically-relevant annotation.
+<strong>Different angles</strong></p>
+<p>It is important to create unique identifiers for each layer or run,
+otherwise, the results will be overwritten and saved incorrectly as
+<code>PCA</code>, for example.</p>
+<p>For simplicity, we here perform dimensionality reduction and
+clustering on gene level, i.e., using immune and non-immune genes, after
+choosing top 2.5% HVG (for memory/demonstration reasons):</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42L</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">create_dim_red</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">scae</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">genes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellAlleleExperiment/man/scae_subset.html" class="external-link">scae_subset</a></span><span class="op">(</span><span class="va">scae</span>, <span class="st">"nonimmune"</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellAlleleExperiment/man/scae_subset.html" class="external-link">scae_subset</a></span><span class="op">(</span><span class="va">scae</span>, <span class="st">"immune_genes"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">gene_var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scran/man/modelGeneVar.html" class="external-link">modelGeneVar</a></span><span class="op">(</span><span class="va">scae</span><span class="op">[</span><span class="va">genes</span>, <span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="va">chosen_hvgs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scran/man/getTopHVGs.html" class="external-link">getTopHVGs</a></span><span class="op">(</span><span class="va">gene_var</span>, prop<span class="op">=</span><span class="fl">0.025</span><span class="op">)</span> <span class="co"># you could use 20%</span></span>
+<span>  <span class="va">immune_features</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"^ENS"</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">scae</span><span class="op">)</span>, invert<span class="op">=</span><span class="cn">TRUE</span>, value<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="va">scae</span> <span class="op">&lt;-</span> <span class="va">scae</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">chosen_hvgs</span>, <span class="va">immune_features</span><span class="op">)</span><span class="op">)</span>, <span class="op">]</span> <span class="co"># do NOT do this - this is executed here for memory/demonstration reasons</span></span>
+<span>  <span class="va">scae</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocSingular/man/runPCA.html" class="external-link">runPCA</a></span><span class="op">(</span><span class="va">scae</span>, subset_row<span class="op">=</span><span class="va">chosen_hvgs</span>, name<span class="op">=</span><span class="st">"PCA_g"</span><span class="op">)</span></span>
+<span>  <span class="va">scae</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scater/man/runUMAP.html" class="external-link">runUMAP</a></span><span class="op">(</span><span class="va">scae</span>, dimred<span class="op">=</span><span class="st">"PCA_g"</span>, name<span class="op">=</span><span class="st">"UMAP_g"</span><span class="op">)</span></span>
+<span>  <span class="va">scae</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scater/man/runTSNE.html" class="external-link">runTSNE</a></span><span class="op">(</span><span class="va">scae</span>, dimred<span class="op">=</span><span class="st">"PCA_g"</span>, name<span class="op">=</span><span class="st">"TSNE_g"</span><span class="op">)</span></span>
+<span>  <span class="va">snn_graph</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scran/man/buildSNNGraph.html" class="external-link">buildSNNGraph</a></span><span class="op">(</span><span class="va">scae</span>, k<span class="op">=</span><span class="fl">50</span>, use.dimred<span class="op">=</span><span class="st">'PCA_g'</span><span class="op">)</span></span>
+<span>  <span class="va">igraph_clusters</span> <span class="op">&lt;-</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://r.igraph.org/reference/cluster_louvain.html" class="external-link">cluster_louvain</a></span><span class="op">(</span><span class="va">snn_graph</span><span class="op">)</span><span class="op">$</span><span class="va">membership</span></span>
+<span>  <span class="va">scae</span><span class="op">$</span><span class="va">cluster_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">igraph_clusters</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">scae</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">plot_dim_red</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">scae</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html" class="external-link">plotUMAP</a></span><span class="op">(</span><span class="va">scae</span>, colour_by<span class="op">=</span><span class="st">"cluster_id"</span>, dimred<span class="op">=</span><span class="st">"UMAP_g"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
+<span>          axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
+<span>          legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html" class="external-link">plotTSNE</a></span><span class="op">(</span><span class="va">scae</span>, colour_by<span class="op">=</span><span class="st">"cluster_id"</span>, dimred<span class="op">=</span><span class="st">"TSNE_g"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
+<span>          axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
+<span>          legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html" class="external-link">plot_grid</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">scae</span> <span class="op">&lt;-</span> <span class="fu">create_dim_red</span><span class="op">(</span><span class="va">scae</span><span class="op">)</span></span>
+<span><span class="fu">plot_dim_red</span><span class="op">(</span><span class="va">scae</span><span class="op">)</span></span></code></pre></div>
+<p><img src="scIGDWorkflowDemo_files/figure-html/unnamed-chunk-14-1.png" width="960"></p>
+</div>
+<div class="section level4">
+<h4 id="visualization-of-hlaimmune-features">Visualization of HLA/immune features<a class="anchor" aria-label="anchor" href="#visualization-of-hlaimmune-features"></a>
+</h4>
+<div class="section level5">
+<h5 id="example-of-a-gene-and-its-alleles">Example of a gene and its alleles<a class="anchor" aria-label="anchor" href="#example-of-a-gene-and-its-alleles"></a>
+</h5>
+<p>This type of representation helps us determine which of the two
+alleles has a greater influence on the gene’s expression:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scater/man/plotReducedDim.html" class="external-link">plotReducedDim</a></span><span class="op">(</span><span class="va">scae</span>, dimred <span class="op">=</span> <span class="st">"TSNE_g"</span>, by_exprs_values <span class="op">=</span> <span class="st">"logcounts"</span>, colour_by <span class="op">=</span> <span class="st">"HLA-DQA1"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position<span class="op">=</span><span class="st">"bottom"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_colour_gradient2</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"HLA-DQA1"</span>, low <span class="op">=</span> <span class="st">"lightblue"</span>, mid <span class="op">=</span> <span class="st">"lightblue"</span>, high <span class="op">=</span> <span class="st">"darkred"</span>, na.value <span class="op">=</span> <span class="st">"gray80"</span>, guide <span class="op">=</span> <span class="st">"colourbar"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scater/man/plotReducedDim.html" class="external-link">plotReducedDim</a></span><span class="op">(</span><span class="va">scae</span>, dimred <span class="op">=</span> <span class="st">"TSNE_g"</span>, by_exprs_values <span class="op">=</span> <span class="st">"logcounts"</span>, colour_by <span class="op">=</span> <span class="st">"DQA1*01:03:01:01"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position<span class="op">=</span><span class="st">"bottom"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_colour_gradient2</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"DQA1*01:03:01:01"</span>, low <span class="op">=</span> <span class="st">"lightblue"</span>, mid <span class="op">=</span> <span class="st">"lightblue"</span>, high <span class="op">=</span> <span class="st">"darkred"</span>, na.value <span class="op">=</span> <span class="st">"gray80"</span>, guide <span class="op">=</span> <span class="st">"colourbar"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scater/man/plotReducedDim.html" class="external-link">plotReducedDim</a></span><span class="op">(</span><span class="va">scae</span>, dimred <span class="op">=</span> <span class="st">"TSNE_g"</span>, by_exprs_values <span class="op">=</span> <span class="st">"logcounts"</span>, colour_by <span class="op">=</span> <span class="st">"DQA1*02:01"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position<span class="op">=</span><span class="st">"bottom"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_colour_gradient2</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"DQA1*02:01"</span>, low <span class="op">=</span> <span class="st">"lightblue"</span>, mid <span class="op">=</span> <span class="st">"lightblue"</span>, high <span class="op">=</span> <span class="st">"darkred"</span>, na.value <span class="op">=</span> <span class="st">"gray80"</span>, guide <span class="op">=</span> <span class="st">"colourbar"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html" class="external-link">plot_grid</a></span><span class="op">(</span>plotlist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span>, <span class="va">p3</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">3</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="scIGDWorkflowDemo_files/figure-html/unnamed-chunk-15-1.png" width="1152"></p>
+</div>
+<div class="section level5">
+<h5 id="tsne">tSNE<a class="anchor" aria-label="anchor" href="#tsne"></a>
+</h5>
+<p>This helps us identify the clusters or regions where immune features
+are expressed the most:</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tsne_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scater/man/plot_reddim.html" class="external-link">plotTSNE</a></span><span class="op">(</span><span class="va">scae</span>, colour_by<span class="op">=</span><span class="st">"cluster_id"</span>, dimred<span class="op">=</span><span class="st">"TSNE_g"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">tsne_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">tsne_list</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">p1</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">immune_features</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"^ENS"</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">scae</span><span class="op">)</span>, invert<span class="op">=</span><span class="cn">TRUE</span>, value<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">feature</span> <span class="kw">in</span> <span class="va">immune_features</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scater/man/plotReducedDim.html" class="external-link">plotReducedDim</a></span><span class="op">(</span><span class="va">scae</span>, dimred <span class="op">=</span> <span class="st">"TSNE_g"</span>, by_exprs_values <span class="op">=</span> <span class="st">"logcounts"</span>, colour_by <span class="op">=</span> <span class="va">feature</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html" class="external-link">scale_colour_gradient2</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">feature</span>, low <span class="op">=</span> <span class="st">"lightblue"</span>, mid <span class="op">=</span> <span class="st">"lightblue"</span>, high <span class="op">=</span> <span class="st">"darkred"</span>, na.value <span class="op">=</span> <span class="st">"gray80"</span>, guide <span class="op">=</span> <span class="st">"colourbar"</span><span class="op">)</span></span>
+<span>  <span class="va">tsne_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">tsne_list</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">p2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html" class="external-link">plot_grid</a></span><span class="op">(</span>plotlist <span class="op">=</span> <span class="va">tsne_list</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<p><img src="scIGDWorkflowDemo_files/figure-html/unnamed-chunk-16-1.png" width="1152"></p>
+</div>
+<div class="section level5">
+<h5 id="violin-plots">Violin plots<a class="anchor" aria-label="anchor" href="#violin-plots"></a>
+</h5>
+<p>Violin plots allow us to identify differences in allele expression
+within each cluster:</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">alleles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellAlleleExperiment/man/scae_subset.html" class="external-link">scae_subset</a></span><span class="op">(</span><span class="va">scae</span>, <span class="st">"alleles"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/scater/man/plotExpression.html" class="external-link">plotExpression</a></span><span class="op">(</span><span class="va">scae</span>, <span class="va">alleles</span>, other_fields<span class="op">=</span><span class="st">"cluster_id"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">cluster_id</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
+<span>        axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="scIGDWorkflowDemo_files/figure-html/unnamed-chunk-17-1.png" width="1152"></p>
+</div>
+<div class="section level5">
+<h5 id="heatmaps">Heatmaps<a class="anchor" aria-label="anchor" href="#heatmaps"></a>
+</h5>
+<p>Heatmaps enable us to identify upregulated or downregulated alleles
+across all clusters:</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/scater/man/plotGroupedHeatmap.html" class="external-link">plotGroupedHeatmap</a></span><span class="op">(</span><span class="va">scae</span>, features<span class="op">=</span><span class="va">alleles</span>, group<span class="op">=</span><span class="st">"cluster_id"</span>,</span>
+<span>                   center<span class="op">=</span><span class="cn">TRUE</span>, scale<span class="op">=</span><span class="cn">FALSE</span>, cluster_rows<span class="op">=</span><span class="cn">FALSE</span>,</span>
+<span>                   treeheight_col<span class="op">=</span><span class="fl">5</span>, fontsize<span class="op">=</span><span class="fl">8</span><span class="op">)</span></span></code></pre></div>
+<p><img src="scIGDWorkflowDemo_files/figure-html/unnamed-chunk-18-1.png" width="1152"></p>
+</div>
+<div class="section level5">
+<h5 id="bar-plots">Bar plots<a class="anchor" aria-label="anchor" href="#bar-plots"></a>
+</h5>
+<p>Comparison of allele frequencies: HLA class I</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">class_I</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"^A|^B|^C"</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellAlleleExperiment/man/scae_subset.html" class="external-link">scae_subset</a></span><span class="op">(</span><span class="va">scae</span>, <span class="st">"alleles"</span><span class="op">)</span><span class="op">)</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">class_I_counts</span> <span class="op">&lt;-</span> <span class="fu">assay</span><span class="op">(</span><span class="va">scae</span><span class="op">[</span><span class="va">class_I</span>, <span class="op">]</span>, <span class="st">"logcounts"</span><span class="op">)</span></span>
+<span><span class="va">class_I_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">as.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">class_I_counts</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">class_I_df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Allele"</span>, <span class="st">"Cell"</span>, <span class="st">"Count"</span><span class="op">)</span></span>
+<span><span class="va">class_I_df</span><span class="op">$</span><span class="va">Cluster</span> <span class="op">&lt;-</span> <span class="fu">colData</span><span class="op">(</span><span class="va">scae</span><span class="op">)</span><span class="op">$</span><span class="va">cluster_id</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/match.html" class="external-link">match</a></span><span class="op">(</span><span class="va">class_I_df</span><span class="op">$</span><span class="va">Cell</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">scae</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">class_I_counts_by_cluster</span> <span class="op">&lt;-</span> <span class="va">class_I_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Cluster</span>, <span class="va">Allele</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>Total_Count <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">Count</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">class_I_counts_by_cluster</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Cluster</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">Total_Count</span>, fill <span class="op">=</span> <span class="va">Allele</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"cluster"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"total allele count (logcounts)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="scIGDWorkflowDemo_files/figure-html/unnamed-chunk-19-1.png" width="1152"></p>
+<p>Comparison of allele frequencies: HLA class II</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">class_II</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"^DRB1|^DPB1|^DQA1|^DQB1"</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellAlleleExperiment/man/scae_subset.html" class="external-link">scae_subset</a></span><span class="op">(</span><span class="va">scae</span>, <span class="st">"alleles"</span><span class="op">)</span><span class="op">)</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">class_II_counts</span> <span class="op">&lt;-</span> <span class="fu">assay</span><span class="op">(</span><span class="va">scae</span><span class="op">[</span><span class="va">class_II</span>, <span class="op">]</span>, <span class="st">"logcounts"</span><span class="op">)</span></span>
+<span><span class="va">class_II_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">as.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">class_II_counts</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">class_II_df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Allele"</span>, <span class="st">"Cell"</span>, <span class="st">"Count"</span><span class="op">)</span></span>
+<span><span class="va">class_II_df</span><span class="op">$</span><span class="va">Cluster</span> <span class="op">&lt;-</span> <span class="fu">colData</span><span class="op">(</span><span class="va">scae</span><span class="op">)</span><span class="op">$</span><span class="va">cluster_id</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/match.html" class="external-link">match</a></span><span class="op">(</span><span class="va">class_II_df</span><span class="op">$</span><span class="va">Cell</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">scae</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">class_II_counts_by_cluster</span> <span class="op">&lt;-</span> <span class="va">class_II_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Cluster</span>, <span class="va">Allele</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>Total_Count <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">Count</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">class_II_counts_by_cluster</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Cluster</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">Total_Count</span>, fill <span class="op">=</span> <span class="va">Allele</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"cluster"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"total allele count (logcounts)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="scIGDWorkflowDemo_files/figure-html/unnamed-chunk-20-1.png" width="1152"></p>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="additional">Additional<a class="anchor" aria-label="anchor" href="#additional"></a>
+</h3>
+<p>Since the <code>scae</code> object extends the <code>sce</code>
+object, it is compatible with the <code>Biocpkg("iSEE")</code> package
+for interactive data exploration.</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="session">Session<a class="anchor" aria-label="anchor" href="#session"></a>
+</h2>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; R version 4.4.1 (2024-06-14)</span></span>
+<span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu</span></span>
+<span><span class="co">#&gt; Running under: Ubuntu 22.04.4 LTS</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Matrix products: default</span></span>
+<span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
+<span><span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; locale:</span></span>
+<span><span class="co">#&gt;  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              </span></span>
+<span><span class="co">#&gt;  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    </span></span>
+<span><span class="co">#&gt;  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   </span></span>
+<span><span class="co">#&gt;  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 </span></span>
+<span><span class="co">#&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span></span>
+<span><span class="co">#&gt; [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; time zone: Etc/UTC</span></span>
+<span><span class="co">#&gt; tzcode source: system (glibc)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; attached base packages:</span></span>
+<span><span class="co">#&gt; [1] stats4    stats     graphics  grDevices utils     datasets  methods  </span></span>
+<span><span class="co">#&gt; [8] base     </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; other attached packages:</span></span>
+<span><span class="co">#&gt;  [1] pheatmap_1.0.12                  scater_1.33.2                   </span></span>
+<span><span class="co">#&gt;  [3] scran_1.33.0                     scuttle_1.15.1                  </span></span>
+<span><span class="co">#&gt;  [5] cowplot_1.1.3                    Matrix_1.7-0                    </span></span>
+<span><span class="co">#&gt;  [7] DropletUtils_1.25.0              gridExtra_2.3                   </span></span>
+<span><span class="co">#&gt;  [9] lubridate_1.9.3                  forcats_1.0.0                   </span></span>
+<span><span class="co">#&gt; [11] stringr_1.5.1                    dplyr_1.1.4                     </span></span>
+<span><span class="co">#&gt; [13] purrr_1.0.2                      readr_2.1.5                     </span></span>
+<span><span class="co">#&gt; [15] tidyr_1.3.1                      tibble_3.2.1                    </span></span>
+<span><span class="co">#&gt; [17] ggplot2_3.5.1                    tidyverse_2.0.0                 </span></span>
+<span><span class="co">#&gt; [19] scaeData_1.1.1                   SingleCellAlleleExperiment_1.1.0</span></span>
+<span><span class="co">#&gt; [21] SingleCellExperiment_1.27.2      SummarizedExperiment_1.35.1     </span></span>
+<span><span class="co">#&gt; [23] Biobase_2.65.0                   GenomicRanges_1.57.1            </span></span>
+<span><span class="co">#&gt; [25] GenomeInfoDb_1.41.1              IRanges_2.39.1                  </span></span>
+<span><span class="co">#&gt; [27] S4Vectors_0.43.1                 BiocGenerics_0.51.0             </span></span>
+<span><span class="co">#&gt; [29] MatrixGenerics_1.17.0            matrixStats_1.3.0               </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span><span class="co">#&gt;   [1] RColorBrewer_1.1-3        jsonlite_1.8.8           </span></span>
+<span><span class="co">#&gt;   [3] magrittr_2.0.3            ggbeeswarm_0.7.2         </span></span>
+<span><span class="co">#&gt;   [5] farver_2.1.2              rmarkdown_2.27           </span></span>
+<span><span class="co">#&gt;   [7] fs_1.6.4                  zlibbioc_1.51.1          </span></span>
+<span><span class="co">#&gt;   [9] ragg_1.3.2                vctrs_0.6.5              </span></span>
+<span><span class="co">#&gt;  [11] memoise_2.0.1             DelayedMatrixStats_1.27.1</span></span>
+<span><span class="co">#&gt;  [13] htmltools_0.5.8.1         S4Arrays_1.5.4           </span></span>
+<span><span class="co">#&gt;  [15] AnnotationHub_3.13.0      curl_5.2.1               </span></span>
+<span><span class="co">#&gt;  [17] BiocNeighbors_1.23.0      Rhdf5lib_1.27.0          </span></span>
+<span><span class="co">#&gt;  [19] SparseArray_1.5.20        rhdf5_2.49.0             </span></span>
+<span><span class="co">#&gt;  [21] sass_0.4.9                bslib_0.7.0              </span></span>
+<span><span class="co">#&gt;  [23] htmlwidgets_1.6.4         desc_1.4.3               </span></span>
+<span><span class="co">#&gt;  [25] cachem_1.1.0              igraph_2.0.3             </span></span>
+<span><span class="co">#&gt;  [27] mime_0.12                 lifecycle_1.0.4          </span></span>
+<span><span class="co">#&gt;  [29] pkgconfig_2.0.3           rsvd_1.0.5               </span></span>
+<span><span class="co">#&gt;  [31] R6_2.5.1                  fastmap_1.2.0            </span></span>
+<span><span class="co">#&gt;  [33] GenomeInfoDbData_1.2.12   digest_0.6.36            </span></span>
+<span><span class="co">#&gt;  [35] colorspace_2.1-0          AnnotationDbi_1.67.0     </span></span>
+<span><span class="co">#&gt;  [37] dqrng_0.4.1               irlba_2.3.5.1            </span></span>
+<span><span class="co">#&gt;  [39] ExperimentHub_2.13.0      textshaping_0.4.0        </span></span>
+<span><span class="co">#&gt;  [41] RSQLite_2.3.7             org.Hs.eg.db_3.19.1      </span></span>
+<span><span class="co">#&gt;  [43] beachmat_2.21.4           labeling_0.4.3           </span></span>
+<span><span class="co">#&gt;  [45] filelock_1.0.3            fansi_1.0.6              </span></span>
+<span><span class="co">#&gt;  [47] timechange_0.3.0          httr_1.4.7               </span></span>
+<span><span class="co">#&gt;  [49] abind_1.4-5               compiler_4.4.1           </span></span>
+<span><span class="co">#&gt;  [51] bit64_4.0.5               withr_3.0.0              </span></span>
+<span><span class="co">#&gt;  [53] BiocParallel_1.39.0       viridis_0.6.5            </span></span>
+<span><span class="co">#&gt;  [55] DBI_1.2.3                 highr_0.11               </span></span>
+<span><span class="co">#&gt;  [57] HDF5Array_1.33.3          R.utils_2.12.3           </span></span>
+<span><span class="co">#&gt;  [59] rappdirs_0.3.3            DelayedArray_0.31.7      </span></span>
+<span><span class="co">#&gt;  [61] bluster_1.15.0            tools_4.4.1              </span></span>
+<span><span class="co">#&gt;  [63] vipor_0.4.7               beeswarm_0.4.0           </span></span>
+<span><span class="co">#&gt;  [65] R.oo_1.26.0               glue_1.7.0               </span></span>
+<span><span class="co">#&gt;  [67] rhdf5filters_1.17.0       grid_4.4.1               </span></span>
+<span><span class="co">#&gt;  [69] Rtsne_0.17                cluster_2.1.6            </span></span>
+<span><span class="co">#&gt;  [71] generics_0.1.3            gtable_0.3.5             </span></span>
+<span><span class="co">#&gt;  [73] tzdb_0.4.0                R.methodsS3_1.8.2        </span></span>
+<span><span class="co">#&gt;  [75] hms_1.1.3                 metapod_1.13.0           </span></span>
+<span><span class="co">#&gt;  [77] BiocSingular_1.21.2       ScaledMatrix_1.13.0      </span></span>
+<span><span class="co">#&gt;  [79] utf8_1.2.4                XVector_0.45.0           </span></span>
+<span><span class="co">#&gt;  [81] RcppAnnoy_0.0.22          ggrepel_0.9.5            </span></span>
+<span><span class="co">#&gt;  [83] BiocVersion_3.20.0        pillar_1.9.0             </span></span>
+<span><span class="co">#&gt;  [85] limma_3.61.2              BiocFileCache_2.13.0     </span></span>
+<span><span class="co">#&gt;  [87] lattice_0.22-6            bit_4.0.5                </span></span>
+<span><span class="co">#&gt;  [89] tidyselect_1.2.1          locfit_1.5-9.10          </span></span>
+<span><span class="co">#&gt;  [91] Biostrings_2.73.1         knitr_1.48               </span></span>
+<span><span class="co">#&gt;  [93] edgeR_4.3.5               xfun_0.45                </span></span>
+<span><span class="co">#&gt;  [95] statmod_1.5.0             stringi_1.8.4            </span></span>
+<span><span class="co">#&gt;  [97] UCSC.utils_1.1.0          yaml_2.3.9               </span></span>
+<span><span class="co">#&gt;  [99] evaluate_0.24.0           codetools_0.2-20         </span></span>
+<span><span class="co">#&gt; [101] BiocManager_1.30.23       cli_3.6.3                </span></span>
+<span><span class="co">#&gt; [103] uwot_0.2.2                systemfonts_1.1.0        </span></span>
+<span><span class="co">#&gt; [105] munsell_0.5.1             jquerylib_0.1.4          </span></span>
+<span><span class="co">#&gt; [107] Rcpp_1.0.12               dbplyr_2.5.0             </span></span>
+<span><span class="co">#&gt; [109] png_0.1-8                 parallel_4.4.1           </span></span>
+<span><span class="co">#&gt; [111] pkgdown_2.1.0             blob_1.2.4               </span></span>
+<span><span class="co">#&gt; [113] sparseMatrixStats_1.17.2  viridisLite_0.4.2        </span></span>
+<span><span class="co">#&gt; [115] scales_1.3.0              crayon_1.5.3             </span></span>
+<span><span class="co">#&gt; [117] rlang_1.1.4               KEGGREST_1.45.1</span></span></code></pre></div>
 </div>
 <div class="footnotes footnotes-end-of-document">
 <hr>
 <ol>
-<li id="fn1"><p><a href="mailto:seandavi@gmail.com" class="email">seandavi@gmail.com</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>Institution<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>Another Institution<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p><a href="mailto:alajami@med.uni-frankfurt.de" class="email">alajami@med.uni-frankfurt.de</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p><a href="mailto:schuck@med.uni-frankfurt.de" class="email">schuck@med.uni-frankfurt.de</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><a href="mailto:marinif@uni-mainz.de" class="email">marinif@uni-mainz.de</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p><a href="mailto:imkeller@med.uni-frankfurt.de" class="email">imkeller@med.uni-frankfurt.de</a><a href="#fnref4" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>

@@ -3,7 +3,7 @@ pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   scIGDWorkflowDemo: scIGDWorkflowDemo.html
-last_built: 2024-07-15T11:16Z
+last_built: 2024-07-16T14:08Z
 urls:
   reference: https://ahmadalajami.github.io/scIGDWorkflowDemoBioC2024/reference
   article: https://ahmadalajami.github.io/scIGDWorkflowDemoBioC2024/articles
