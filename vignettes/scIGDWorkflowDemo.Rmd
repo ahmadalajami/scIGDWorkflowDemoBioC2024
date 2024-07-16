@@ -323,13 +323,11 @@ For simplicity, we here perform dimensionality reduction and clustering on gene 
 ```
 
 ```{r}
-#sce <- as(scae, "SingleCellExperiment")
-#sce <- BiocSingular::runPCA(sce)
+scae <- scae[1:500,]
 ```
 
 ```{r}
-#sce <- as(scae, "SingleCellExperiment")
-#sce <- scater::runPCA(sce)
+scae <- runPCA(scae)
 ```
 
 ```{r}
