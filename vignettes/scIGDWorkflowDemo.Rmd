@@ -315,19 +315,23 @@ genes <- c(rownames(scae_subset(scae, "nonimmune")), rownames(scae_subset(scae, 
 ```
 
 ```{r}
-gene_var <- modelGeneVar(scae[genes, ])
+#gene_var <- modelGeneVar(scae[genes, ])
 ```
 
 ```{r}
-chosen_hvgs <- getTopHVGs(gene_var, prop=0.005)
+#chosen_hvgs <- getTopHVGs(gene_var, prop=0.005)
 ```
 
 ```{r}
-scae <- runPCA(scae, subset_row=chosen_hvgs, name="PCA_g")
+sce <- scae[1:500,]
 ```
 
 ```{r}
-scae <- runUMAP(scae, dimred="PCA_g", name="UMAP_g")
+sce <- runPCA(sce, name="PCA_g")
+```
+
+```{r}
+scae <- runUMAP(scae, dimred="PCA", name="UMAP_g")
 ```
 
 ```{r}
