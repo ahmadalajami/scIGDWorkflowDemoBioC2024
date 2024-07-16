@@ -327,7 +327,7 @@ scae <- scae[1:500,]
 ```
 
 ```{r}
-scae <- runPCA(scae)
+scae <- runPCA(scae, name="PCA_g")
 ```
 
 ```{r}
