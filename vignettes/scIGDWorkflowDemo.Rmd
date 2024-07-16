@@ -311,15 +311,15 @@ It is important to create unique identifiers for each layer or run, otherwise, t
 For simplicity, we here perform dimensionality reduction and clustering on gene level, i.e., using immune and non-immune genes, after choosing top 20% HVG:
 
 ```{r}
-genes <- c(rownames(scae_subset(scae, "nonimmune")), rownames(scae_subset(scae, "immune_genes")))
+#genes <- c(rownames(scae_subset(scae, "nonimmune")), rownames(scae_subset(scae, "immune_genes")))
 ```
 
 ```{r}
-gene_var <- modelGeneVar(scae[genes, ])
+#gene_var <- modelGeneVar(scae[genes, ])
 ```
 
 ```{r}
-chosen_hvgs <- getTopHVGs(gene_var, prop=0.2)
+#chosen_hvgs <- getTopHVGs(gene_var, prop=0.2)
 ```
 
 ```{r}
