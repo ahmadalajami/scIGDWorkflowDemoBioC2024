@@ -312,6 +312,7 @@ For simplicity, we here perform dimensionality reduction and clustering on gene 
 
 ```{r}
 genes <- c(rownames(scae_subset(scae, "nonimmune")), rownames(scae_subset(scae, "immune_genes")))
+immune_features <- grep("^ENS", rownames(scae), invert=TRUE, value=TRUE)
 ```
 
 ```{r}
@@ -323,7 +324,7 @@ chosen_hvgs <- getTopHVGs(gene_var, prop=0.02)
 ```
 
 ```{r}
-scae <- scae[chosen_hvgs,]
+scae <- scae[c(chosen_hvgs, immune_features),]
 ```
 
 ```{r}
