@@ -323,7 +323,7 @@ For simplicity, we here perform dimensionality reduction and clustering on gene 
 ```
 
 ```{r}
-scae <- scae[1:500,]
+scae <- scae[1:10000,]
 ```
 
 ```{r}
