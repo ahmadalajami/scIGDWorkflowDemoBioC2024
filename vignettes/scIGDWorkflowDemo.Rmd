@@ -323,8 +323,7 @@ For simplicity, we here perform dimensionality reduction and clustering on gene 
 ```
 
 ```{r}
-scae <- scae[1:1000,]
-scae <- scae[rownames(scae) %nin% "ENSG00000143493.13",]
+scae <- scae[1000:1500,]
 ```
 
 ```{r}
