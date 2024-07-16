@@ -319,7 +319,7 @@ gene_var <- modelGeneVar(scae[genes, ])
 ```
 
 ```{r}
-chosen_hvgs <- getTopHVGs(gene_var, prop=0.1)
+chosen_hvgs <- getTopHVGs(gene_var, prop=0.02)
 ```
 
 ```{r}
