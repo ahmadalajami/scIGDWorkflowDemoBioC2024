@@ -308,7 +308,7 @@ In addition, it enables the user to perform comprehensive analysis across differ
 
 It is important to create unique identifiers for each layer or run, otherwise, the results will be overwritten and saved incorrectly as `PCA`, for example.
 
-For simplicity, we here perform dimensionality reduction and clustering on gene level, i.e., using immune and non-immune genes, after choosing top 2.5% HVG (for memory/demonstration reasons):
+For simplicity, we here perform dimensionality reduction and clustering on gene level, i.e., using immune and non-immune genes, after choosing top 2% HVG (for memory/demonstration reasons):
 
 ```{r, fig.width=10, fig.height=4, warning=FALSE}
 set.seed(42L)
@@ -316,9 +316,9 @@ set.seed(42L)
 create_dim_red <- function(scae){
   genes <- c(rownames(scae_subset(scae, "nonimmune")), rownames(scae_subset(scae, "immune_genes")))
   gene_var <- modelGeneVar(scae[genes, ])
-  chosen_hvgs <- getTopHVGs(gene_var, prop=0.025) # you could use 20%
+  chosen_hvgs <- getTopHVGs(gene_var, prop=0.02) # you could use 20%
   immune_features <- grep("^ENS", rownames(scae), invert=TRUE, value=TRUE)
-  scae <- scae[unique(c(chosen_hvgs, immune_features)), ] # do NOT do this - this is executed here for memory/demonstration reasons
+  scae <- scae[unique(c(immune_features, chosen_hvgs)), ] # do NOT do this - this is executed here for memory/demonstration reasons
   scae <- runPCA(scae, subset_row=chosen_hvgs, name="PCA_g")
   scae <- runUMAP(scae, dimred="PCA_g", name="UMAP_g")
   scae <- runTSNE(scae, dimred="PCA_g", name="TSNE_g")
