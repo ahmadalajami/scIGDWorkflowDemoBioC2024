@@ -17,12 +17,10 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Depends: 
-    Biobase,
-    R (>= 4.4.0),
+    R (>= 4.4.0)
+Imports: 
     scaeData,
-    SingleCellAlleleExperiment
-Imports:
-    AnnotationHub,
+    SingleCellAlleleExperiment,
     scran,
     scater,
     scuttle,
@@ -32,9 +30,10 @@ Imports:
     DropletUtils,
     gridExtra,
     cowplot,
-    pheatmap,
-    igraph
-Suggests: 
+    Matrix,
+    igraph,
+    iSEE
+Suggests:
     knitr,
     rmarkdown,
     pkgdown,
