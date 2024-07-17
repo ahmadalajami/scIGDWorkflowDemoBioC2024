@@ -26,6 +26,7 @@ Imports:
     org.Hs.eg.db,
     ggplot2,
     cowplot,
+    dplyr,
     Matrix,
     igraph,
     iSEE
