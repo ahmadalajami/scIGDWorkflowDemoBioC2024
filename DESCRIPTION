@@ -15,26 +15,23 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Depends: 
-    Biobase,
-    R (>= 4.4.0),
+    R (>= 4.4.0)
+Imports: 
     scaeData,
-    SingleCellAlleleExperiment
-Imports:
-    AnnotationHub,
+    SingleCellAlleleExperiment,
+    DropletUtils,
     scran,
     scater,
-    scuttle,
-    tidyverse,
     org.Hs.eg.db,
-    AnnotationDbi,
-    DropletUtils,
-    gridExtra,
+    ggplot2,
     cowplot,
-    pheatmap,
-    igraph
-Suggests: 
+    dplyr,
+    Matrix,
+    igraph,
+    iSEE
+Suggests:
     knitr,
     rmarkdown,
     pkgdown,

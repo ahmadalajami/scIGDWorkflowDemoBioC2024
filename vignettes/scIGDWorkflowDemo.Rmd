@@ -1,7 +1,8 @@
 ---
 title: "scIGD: Unraveling Immunogenomic Diversity in Single-Cell Data"
 author: Ahmad Al Ajami^[alajami@med.uni-frankfurt.de], Jonas Schuck^[schuck@med.uni-frankfurt.de], Federico Marini^[marinif@uni-mainz.de], Katharina Imkeller^[imkeller@med.uni-frankfurt.de]
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{scIGD}
   %\VignetteEngine{knitr::rmarkdown}
@@ -79,14 +80,12 @@ We start by loading the packages that will be used in this demo
 suppressPackageStartupMessages({
 library(SingleCellAlleleExperiment)
 library(scaeData)
-library(tidyverse)
-library(gridExtra)
-library(DropletUtils)
 library(Matrix)
 library(cowplot)
+library(dplyr)
+library(ggplot2)
 library(scran)
 library(scater)
-library(pheatmap)
 })
 ```
 
@@ -298,7 +297,7 @@ PCA, UMAP, tSNE, and SNN graph can be computed/built using any of the three laye
 
 This allows the representation of immune genes at various levels, from alleles to genes to functionally-similar gene groups. 
 
-In addition, it enables the user to perform comprehensive analysis across different layers of immunologically-relevant annotation. **Different angles**
+In addition, it enables the user to perform comprehensive analysis across different layers of immunologically-relevant annotation - enabling **different angles** on the same dataset at hand.
 
 It is important to create unique identifiers for each layer or run, otherwise, the results will be overwritten and saved incorrectly as `PCA`, for example.
 
@@ -407,8 +406,8 @@ class_I_counts <- assay(scae[class_I, ], "logcounts")
 class_I_df <- as.data.frame(as.table(as.matrix(class_I_counts)))
 colnames(class_I_df) <- c("Allele", "Cell", "Count")
 class_I_df$Cluster <- colData(scae)$cluster_id[match(class_I_df$Cell, colnames(scae))]
-class_I_counts_by_cluster <- class_I_df %>%
-  group_by(Cluster, Allele) %>%
+class_I_counts_by_cluster <- class_I_df |> 
+  group_by(Cluster, Allele) |> 
   summarize(Total_Count = sum(Count))
 
 ggplot(class_I_counts_by_cluster, aes(x = factor(Cluster), y = Total_Count, fill = Allele)) +
@@ -427,8 +426,8 @@ class_II_counts <- assay(scae[class_II, ], "logcounts")
 class_II_df <- as.data.frame(as.table(as.matrix(class_II_counts)))
 colnames(class_II_df) <- c("Allele", "Cell", "Count")
 class_II_df$Cluster <- colData(scae)$cluster_id[match(class_II_df$Cell, colnames(scae))]
-class_II_counts_by_cluster <- class_II_df %>%
-  group_by(Cluster, Allele) %>%
+class_II_counts_by_cluster <- class_II_df |> 
+  group_by(Cluster, Allele) |> 
   summarize(Total_Count = sum(Count))
 
 ggplot(class_II_counts_by_cluster, aes(x = factor(Cluster), y = Total_Count, fill = Allele)) +
@@ -439,11 +438,21 @@ ggplot(class_II_counts_by_cluster, aes(x = factor(Cluster), y = Total_Count, fil
   theme(axis.text.x = element_text(hjust = 1))
 ```
 
-## Additional
+## Interactive exploration of SingleCellAlleleExperiment objects
 
 Since the `scae` object extends the `sce` object, it is compatible with the `Biocpkg("iSEE")` package for interactive data exploration.
 
-# Session
+This can be as simple as executing this chunk:
+
+```{r launchisee, eval=FALSE}
+if (require(iSEE)) {
+  iSEE(scae)
+}
+```
+
+In the object passed, one can simply switch e.g. among the different views provided by the individual reduced dimension embeddings, by simply selecting `TSNE_g`, `UMAP_g`, or any of the others computed on the alternative set of features (allelic, functional, ...) by specifying their names - this was illustrated in the "Dimensionality reduction & clustering" section above.
+
+# Session info {-}
 
 ```{r}
 sessionInfo()
