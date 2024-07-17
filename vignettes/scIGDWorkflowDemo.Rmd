@@ -80,14 +80,11 @@ We start by loading the packages that will be used in this demo
 suppressPackageStartupMessages({
 library(SingleCellAlleleExperiment)
 library(scaeData)
-library(tidyverse)
-library(gridExtra)
-library(DropletUtils)
 library(Matrix)
 library(cowplot)
+library(ggplot2)
 library(scran)
 library(scater)
-library(pheatmap)
 })
 ```
 
