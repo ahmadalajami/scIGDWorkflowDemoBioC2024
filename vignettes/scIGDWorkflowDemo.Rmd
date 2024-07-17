@@ -298,7 +298,7 @@ PCA, UMAP, tSNE, and SNN graph can be computed/built using any of the three laye
 
 This allows the representation of immune genes at various levels, from alleles to genes to functionally-similar gene groups. 
 
-In addition, it enables the user to perform comprehensive analysis across different layers of immunologically-relevant annotation. **Different angles**
+In addition, it enables the user to perform comprehensive analysis across different layers of immunologically-relevant annotation - enabling **different angles** on the same dataset at hand.
 
 It is important to create unique identifiers for each layer or run, otherwise, the results will be overwritten and saved incorrectly as `PCA`, for example.
 
