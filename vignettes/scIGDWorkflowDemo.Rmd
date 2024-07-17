@@ -2,9 +2,7 @@
 title: "scIGD: Unraveling Immunogenomic Diversity in Single-Cell Data"
 author: Ahmad Al Ajami^[alajami@med.uni-frankfurt.de], Jonas Schuck^[schuck@med.uni-frankfurt.de], Federico Marini^[marinif@uni-mainz.de], Katharina Imkeller^[imkeller@med.uni-frankfurt.de]
 output: 
-  BiocStyle::html_document:
-    toc: true
-    toc_float: true
+  rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{scIGD}
   %\VignetteEngine{knitr::rmarkdown}
@@ -291,7 +289,7 @@ plot_feature_expression(scae, immune_features)
 
 In this section, we provide insights into the various data layers of the `scae` object and offer guidance on performing HLA/immune gene expression analysis
 
-### Dimensionality reduction & clustering {#dimreds}
+### Dimensionality reduction & clustering
 
 PCA, UMAP, tSNE, and SNN graph can be computed/built using any of the three layers offered by the `SingleCellAlleleExperiment` object: 
 
@@ -454,7 +452,7 @@ if (require(iSEE)) {
 }
 ```
 
-In the object passed, one can simply switch e.g. among the different views provided by the individual reduced dimension embeddings, by simply selecting `TSNE_g`, `UMAP_g`, or any of the others computed on the alternative set of features (allelic, functional, ...) by specifying their names - this was illustrated in the \@ref(dimreds) section.
+In the object passed, one can simply switch e.g. among the different views provided by the individual reduced dimension embeddings, by simply selecting `TSNE_g`, `UMAP_g`, or any of the others computed on the alternative set of features (allelic, functional, ...) by specifying their names - this was illustrated in the "Dimensionality reduction & clustering" section above.
 
 # Session info {-}
 
