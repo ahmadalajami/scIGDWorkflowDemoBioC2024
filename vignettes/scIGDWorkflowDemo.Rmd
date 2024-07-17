@@ -288,7 +288,7 @@ plot_feature_expression(scae, immune_features)
 
 In this section, we provide insights into the various data layers of the `scae` object and offer guidance on performing HLA/immune gene expression analysis
 
-### Dimensionality reduction & clustering
+### Dimensionality reduction & clustering {#dimreds}
 
 PCA, UMAP, tSNE, and SNN graph can be computed/built using any of the three layers offered by the `SingleCellAlleleExperiment` object: 
 
