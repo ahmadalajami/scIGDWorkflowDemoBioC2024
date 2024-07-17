@@ -7,6 +7,7 @@
 #' @importFrom org.Hs.eg.db org.Hs.eg.db
 #' @importFrom ggplot2 ggplot
 #' @importFrom cowplot plot_grid
+#' @importFrom dplyr group_by
 #' @importFrom Matrix readMM
 #' @importFrom igraph cluster_louvain
 #' @importFrom iSEE iSEE

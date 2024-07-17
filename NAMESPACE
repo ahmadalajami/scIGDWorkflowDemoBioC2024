@@ -3,6 +3,7 @@
 importFrom(Matrix,readMM)
 importFrom(SingleCellAlleleExperiment,read_allele_counts)
 importFrom(cowplot,plot_grid)
+importFrom(dplyr,group_by)
 importFrom(ggplot2,ggplot)
 importFrom(iSEE,iSEE)
 importFrom(igraph,cluster_louvain)
