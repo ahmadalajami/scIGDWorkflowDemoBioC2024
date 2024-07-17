@@ -439,11 +439,21 @@ ggplot(class_II_counts_by_cluster, aes(x = factor(Cluster), y = Total_Count, fil
   theme(axis.text.x = element_text(hjust = 1))
 ```
 
-## Additional
+## Interactive exploration of SingleCellAlleleExperiment objects
 
 Since the `scae` object extends the `sce` object, it is compatible with the `Biocpkg("iSEE")` package for interactive data exploration.
 
-# Session
+This can be as simple as executing this chunk:
+
+```{r launchisee, eval=FALSE}
+if (require(iSEE)) {
+  iSEE(scae)
+}
+```
+
+In the object passed, one can simply switch e.g. among the different views provided by the individual reduced dimension embeddings, by simply selecting `TSNE_g`, `UMAP_g`, or any of the others computed on the alternative set of features (allelic, functional, ...) by specifying their names - this was illustrated in the \@ref(dimreds) section.
+
+# Session info {-}
 
 ```{r}
 sessionInfo()
