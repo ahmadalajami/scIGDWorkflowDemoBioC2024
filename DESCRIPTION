@@ -1,12 +1,19 @@
 Package: scIGDWorkflowDemoBioC2024
 Title: scIGD workflow demo at BioC2024
 Version: 1.0.1
-Authors@R: 
+Authors@R:
+    c(
     person(given = "Ahmad",
            family = "Al Ajami",
            role = c("aut", "cre"),
            email = "alajami@med.uni-frankfurt.de",
-           comment = c(ORCID = "0009-0006-5615-7447"))
+           comment = c(ORCID = "0009-0006-5615-7447")),
+    person(given = "Federico",
+           family = "Marini",
+           role = c("aut"),
+           email = "marinif@uni-mainz.de",
+           comment = c(ORCID = "0000-0003-3252-7758"))
+    )
 Description: This package provides the material for the scIGD workflow demo at BioC2024. 
     The workflow comprises two software (scIGD - Snakemake; SingleCellAlleleExperiment - R/Bioconductor) and one data (scaeData - R/ExperimentHub) packages.
     I showcase all three tools, emphasizing the utilization of SingleCellAlleleExperiment and its functionalities on one of the 
