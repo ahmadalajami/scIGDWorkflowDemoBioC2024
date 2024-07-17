@@ -405,8 +405,8 @@ class_I_counts <- assay(scae[class_I, ], "logcounts")
 class_I_df <- as.data.frame(as.table(as.matrix(class_I_counts)))
 colnames(class_I_df) <- c("Allele", "Cell", "Count")
 class_I_df$Cluster <- colData(scae)$cluster_id[match(class_I_df$Cell, colnames(scae))]
-class_I_counts_by_cluster <- class_I_df %>%
-  group_by(Cluster, Allele) %>%
+class_I_counts_by_cluster <- class_I_df |> 
+  group_by(Cluster, Allele) |> 
   summarize(Total_Count = sum(Count))
 
 ggplot(class_I_counts_by_cluster, aes(x = factor(Cluster), y = Total_Count, fill = Allele)) +
@@ -425,8 +425,8 @@ class_II_counts <- assay(scae[class_II, ], "logcounts")
 class_II_df <- as.data.frame(as.table(as.matrix(class_II_counts)))
 colnames(class_II_df) <- c("Allele", "Cell", "Count")
 class_II_df$Cluster <- colData(scae)$cluster_id[match(class_II_df$Cell, colnames(scae))]
-class_II_counts_by_cluster <- class_II_df %>%
-  group_by(Cluster, Allele) %>%
+class_II_counts_by_cluster <- class_II_df |> 
+  group_by(Cluster, Allele) |> 
   summarize(Total_Count = sum(Count))
 
 ggplot(class_II_counts_by_cluster, aes(x = factor(Cluster), y = Total_Count, fill = Allele)) +
