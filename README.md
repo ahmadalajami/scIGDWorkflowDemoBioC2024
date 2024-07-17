@@ -14,7 +14,7 @@ To address these challenges and unlock deeper insights from single-cell studies,
 
 3. **[scaeData](https://bioconductor.org/packages/scaeData)**: An R/ExperimentHub data package housing three 10x datasets processed by *scIGD*. These datasets can be utilized to perform exploratory and downstream analysis using the novel *SingleCellAlleleExperiment* data structure.
 
-![alt text here](https://raw.githubusercontent.com/ahmadalajami/scIGDWorkflowDemoBioC2024/devel/inst/images/scIGD_SCAE_wokflow.png)
+<img src="https://raw.githubusercontent.com/ahmadalajami/scIGDWorkflowDemoBioC2024/devel/inst/images/scIGD_SCAE_wokflow.png" alt="" />
 
 **Figure 1:** Overview of the *scIGD* workflow for unraveling immunogenomic diversity in single-cell data, highlighting the integration of the *SingleCellAlleleExperiment* package for comprehensive data analysis.
 
