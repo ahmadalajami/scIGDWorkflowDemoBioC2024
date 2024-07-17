@@ -2,6 +2,7 @@
 #'
 #' @importFrom scaeData scaeDataGet
 #' @importFrom SingleCellAlleleExperiment read_allele_counts
+#' @importFrom DropletUtils barcodeRanks
 #' @importFrom scran modelGeneVar
 #' @importFrom scater plotReducedDim
 #' @importFrom org.Hs.eg.db org.Hs.eg.db

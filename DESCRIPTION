@@ -21,6 +21,7 @@ Depends:
 Imports: 
     scaeData,
     SingleCellAlleleExperiment,
+    DropletUtils,
     scran,
     scater,
     org.Hs.eg.db,
