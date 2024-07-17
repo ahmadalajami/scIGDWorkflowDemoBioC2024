@@ -1,7 +1,10 @@
 ---
 title: "scIGD: Unraveling Immunogenomic Diversity in Single-Cell Data"
 author: Ahmad Al Ajami^[alajami@med.uni-frankfurt.de], Jonas Schuck^[schuck@med.uni-frankfurt.de], Federico Marini^[marinif@uni-mainz.de], Katharina Imkeller^[imkeller@med.uni-frankfurt.de]
-output: rmarkdown::html_vignette
+output: 
+  BiocStyle::html_document:
+    toc: true
+    toc_float: true
 vignette: >
   %\VignetteIndexEntry{scIGD}
   %\VignetteEngine{knitr::rmarkdown}
