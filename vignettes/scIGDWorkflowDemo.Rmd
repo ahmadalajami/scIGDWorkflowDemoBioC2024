@@ -212,20 +212,6 @@ scae_functional_groups_subset
 
 ## Pre-processing workflow
 
-```{r, fig.height=5, fig.width=7}
-plot_total_counts <- function(scae) {
-  total_counts <- colSums(counts(scae))
-  
-  ggplot(data.frame(Total_Counts = total_counts), aes(x = Total_Counts)) +
-    geom_histogram(binwidth = 1000, fill = "skyblue", color = "black") +
-    labs(x = "total counts per cell",
-         y = "number of cells") +
-    theme_bw()
-}
-
-plot_total_counts(scae)
-```
-
 ### Feature filtering
 
 Removing all features that have a total count less than 5; with the exception of all HLA/immune features - these are retained
@@ -251,26 +237,8 @@ The data is normalized upon creating the *SingleCellAlleleExperiment* object
 
 ### Distribution of HLA/immune features
 
-```{r, fig.width=10, fig.height=10}
-plot_allele_dist <- function(scae){
-  immune_features <- rownames(scae[rowData(scae)$NI_I == "I", ])
-  p <- do.call(plot_grid, c(lapply(immune_features, function(feature){
-    ggplot(as.data.frame(logcounts(scae)[feature, ]), aes(x=logcounts(scae)[feature, ])) +
-      geom_histogram(color="black",
-                     fill = "black",
-                     breaks=seq(0, 3, by=0.10)) +
-      labs(x = feature) +
-      theme(axis.title.x = element_text(size = 8),
-            axis.title.y = element_text(size = 8),
-            plot.title = element_text(size = 8))}), ncol = 4))
-  print(p)
-}
-
-plot_allele_dist(scae)
-```
-
 ```{r, fig.height=5, fig.width=7}
-plot_feature_expression <- function(scae, immune_features) {
+plot_allele_dist <- function(scae, immune_features) {
   plotExpression(scae, immune_features) +
     theme_bw() +
     theme(axis.text = element_text(size = 5),
@@ -279,7 +247,7 @@ plot_feature_expression <- function(scae, immune_features) {
 }
 
 immune_features <- rownames(scae[rowData(scae)$NI_I == "I", ])
-plot_feature_expression(scae, immune_features)
+plot_allele_dist(scae, immune_features)
 ```
 
 ## Downstream analysis
@@ -400,7 +368,7 @@ plotGroupedHeatmap(scae, features=alleles, group="cluster_id",
 Comparison of allele frequencies: HLA class I
 
 ```{r, message=FALSE, warning=FALSE, fig.width=12, fig.height=4}
-class_I <- grep("^A|^B|^C", alleles, value = TRUE)
+class_I <- grep("^A|^B|^C", alleles, value = TRUE) # or like this: lookup[lookup$Function == "HLA_class_I", "Allele"]
 class_I_counts <- assay(scae[class_I, ], "logcounts")
 class_I_df <- as.data.frame(as.table(as.matrix(class_I_counts)))
 colnames(class_I_df) <- c("Allele", "Cell", "Count")
@@ -420,7 +388,7 @@ ggplot(class_I_counts_by_cluster, aes(x = factor(Cluster), y = Total_Count, fill
 Comparison of allele frequencies: HLA class II
 
 ```{r, message=FALSE, warning=FALSE, fig.width=12, fig.height=4}
-class_II <- grep("^DRB1|^DPB1|^DQA1|^DQB1", alleles, value = TRUE)
+class_II <- grep("^DRB1|^DPB1|^DQA1|^DQB1", alleles, value = TRUE) # or like this: lookup[lookup$Function == "HLA_class_II", "Allele"]
 class_II_counts <- assay(scae[class_II, ], "logcounts")
 class_II_df <- as.data.frame(as.table(as.matrix(class_II_counts)))
 colnames(class_II_df) <- c("Allele", "Cell", "Count")
