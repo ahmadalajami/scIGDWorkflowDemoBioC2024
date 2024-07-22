@@ -98,24 +98,12 @@ library(scater)
 
 - `pbmc_20k`: 20k Human PBMCs, 3' HT v3.1, Chromium X
 
-The `scaeDataGet()` function returns a list with four elements. The `dir` element specifies the directory where files downloaded from `ExperimentHub` are stored on your device. The remaining three elements, `barcodes`, `features`, and `matrix`, contain the corresponding file names as named by `ExperimentHub`. This list is then used to provide the necessary information for the related parameters in `SingleCellAlleleExperiment`
+The `scaeDataGet()` function returns a list with four elements. The `dir` element specifies the directory where files downloaded from `ExperimentHub` are stored on your device. The remaining three elements, `barcodes`, `features`, and `matrix`, contain the corresponding file names as named by `ExperimentHub`. This list is then used to provide the necessary information for the related parameters in `SingleCellAlleleExperiment`.
 
-Here, let's view `pbmc_20k`:
+Here, let's load `pbmc_20k`.
 
 ```{r}
 data <- scaeDataGet(dataset = "pbmc_20k")
-
-cells.dir <- file.path(data$dir, data$barcodes)
-features.dir <- file.path(data$dir, data$features)
-mat.dir <- file.path(data$dir, data$matrix)
-
-cells <- utils::read.csv(cells.dir, sep = "", header = FALSE)
-features <- utils::read.delim(features.dir, header = FALSE)
-mat <- Matrix::readMM(mat.dir)
-
-rownames(mat) <- cells$V1
-colnames(mat) <- features$V1
-head(mat)
 ```
 
 A lookup table corresponding to each dataset, facilitating the creation of relevant additional data layers during object generation, can be accessed from the package's extdata:
