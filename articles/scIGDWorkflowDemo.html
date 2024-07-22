@@ -256,44 +256,26 @@ device. The remaining three elements, <code>barcodes</code>,
 <code>features</code>, and <code>matrix</code>, contain the
 corresponding file names as named by <code>ExperimentHub</code>. This
 list is then used to provide the necessary information for the related
-parameters in <code>SingleCellAlleleExperiment</code></p>
-<p>Here, let’s view <code>pbmc_20k</code>:</p>
+parameters in <code>SingleCellAlleleExperiment</code>.</p>
+<p>Here, let’s load <code>pbmc_20k</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scaeData/man/scaeDataGet.html" class="external-link">scaeDataGet</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="st">"pbmc_20k"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Retrieving barcode identifiers for **pbmc 20k** dataset...DONE</span></span>
 <span><span class="co">#&gt; Retrieving feature identifiers for **pbmc 20k** dataset...DONE</span></span>
 <span><span class="co">#&gt; Retrieving quantification matrix for **pbmc 20k** dataset...DONE</span></span>
 <span></span>
-<span><span class="va">cells.dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">dir</span>, <span class="va">data</span><span class="op">$</span><span class="va">barcodes</span><span class="op">)</span></span>
-<span><span class="va">features.dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">dir</span>, <span class="va">data</span><span class="op">$</span><span class="va">features</span><span class="op">)</span></span>
-<span><span class="va">mat.dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">dir</span>, <span class="va">data</span><span class="op">$</span><span class="va">matrix</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">cells</span> <span class="op">&lt;-</span> <span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">cells.dir</span>, sep <span class="op">=</span> <span class="st">""</span>, header <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="va">features</span> <span class="op">&lt;-</span> <span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.delim</a></span><span class="op">(</span><span class="va">features.dir</span>, header <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="va">mat</span> <span class="op">&lt;-</span> <span class="fu">Matrix</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Matrix/man/externalFormats.html" class="external-link">readMM</a></span><span class="op">(</span><span class="va">mat.dir</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">cells</span><span class="op">$</span><span class="va">V1</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">features</span><span class="op">$</span><span class="va">V1</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span></span>
-<span><span class="co">#&gt; 6 x 62760 sparse Matrix of class "dgTMatrix"</span></span>
-<span><span class="co">#&gt;   [[ suppressing 34 column names 'ENSG00000279928.2', 'ENSG00000228037.1', 'ENSG00000142611.17' ... ]]</span></span>
-<span><span class="co">#&gt;                                                                               </span></span>
-<span><span class="co">#&gt; AAACCCAAGAAACACT . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</span></span>
-<span><span class="co">#&gt; AAACCCAAGAAACTCA . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</span></span>
-<span><span class="co">#&gt; AAACCCAAGAAACTGT . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</span></span>
-<span><span class="co">#&gt; AAACCCAAGAAATTGC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</span></span>
-<span><span class="co">#&gt; AAACCCAAGAACAAGG . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</span></span>
-<span><span class="co">#&gt; AAACCCAAGAACAGGA . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</span></span>
-<span><span class="co">#&gt;                              </span></span>
-<span><span class="co">#&gt; AAACCCAAGAAACACT . . . ......</span></span>
-<span><span class="co">#&gt; AAACCCAAGAAACTCA . . . ......</span></span>
-<span><span class="co">#&gt; AAACCCAAGAAACTGT . . . ......</span></span>
-<span><span class="co">#&gt; AAACCCAAGAAATTGC . . . ......</span></span>
-<span><span class="co">#&gt; AAACCCAAGAACAAGG . . . ......</span></span>
-<span><span class="co">#&gt; AAACCCAAGAACAGGA . . . ......</span></span>
+<span><span class="va">data</span></span>
+<span><span class="co">#&gt; $dir</span></span>
+<span><span class="co">#&gt; [1] "/github/home/.cache/R/ExperimentHub/"</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  .....suppressing 62726 columns in show(); maybe adjust options(max.print=, width=)</span></span>
-<span><span class="co">#&gt;  ..............................</span></span></code></pre></div>
+<span><span class="co">#&gt; $barcodes</span></span>
+<span><span class="co">#&gt; [1] "5a528712de7_9525"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $features</span></span>
+<span><span class="co">#&gt; [1] "5a53a2c8ba1_9526"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $matrix</span></span>
+<span><span class="co">#&gt; [1] "5a570cdaa7_9527"</span></span></code></pre></div>
 <p>A lookup table corresponding to each dataset, facilitating the
 creation of relevant additional data layers during object generation,
 can be accessed from the package’s extdata:</p>
@@ -814,7 +796,7 @@ reduction &amp; clustering” section above.</p>
 <span><span class="co">#&gt; [8] base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] scater_1.33.3                    scran_1.33.0                    </span></span>
+<span><span class="co">#&gt;  [1] scater_1.33.4                    scran_1.33.0                    </span></span>
 <span><span class="co">#&gt;  [3] scuttle_1.15.2                   ggplot2_3.5.1                   </span></span>
 <span><span class="co">#&gt;  [5] dplyr_1.1.4                      cowplot_1.1.3                   </span></span>
 <span><span class="co">#&gt;  [7] Matrix_1.7-0                     scaeData_1.1.1                  </span></span>
@@ -832,10 +814,10 @@ reduction &amp; clustering” section above.</p>
 <span><span class="co">#&gt;   [7] fs_1.6.4                  zlibbioc_1.51.1          </span></span>
 <span><span class="co">#&gt;   [9] ragg_1.3.2                vctrs_0.6.5              </span></span>
 <span><span class="co">#&gt;  [11] memoise_2.0.1             DelayedMatrixStats_1.27.2</span></span>
-<span><span class="co">#&gt;  [13] htmltools_0.5.8.1         S4Arrays_1.5.4           </span></span>
+<span><span class="co">#&gt;  [13] htmltools_0.5.8.1         S4Arrays_1.5.5           </span></span>
 <span><span class="co">#&gt;  [15] AnnotationHub_3.13.0      curl_5.2.1               </span></span>
 <span><span class="co">#&gt;  [17] BiocNeighbors_1.23.0      Rhdf5lib_1.27.0          </span></span>
-<span><span class="co">#&gt;  [19] SparseArray_1.5.22        rhdf5_2.49.0             </span></span>
+<span><span class="co">#&gt;  [19] SparseArray_1.5.25        rhdf5_2.49.0             </span></span>
 <span><span class="co">#&gt;  [21] sass_0.4.9                bslib_0.7.0              </span></span>
 <span><span class="co">#&gt;  [23] htmlwidgets_1.6.4         desc_1.4.3               </span></span>
 <span><span class="co">#&gt;  [25] cachem_1.1.0              igraph_2.0.3             </span></span>
@@ -853,7 +835,7 @@ reduction &amp; clustering” section above.</p>
 <span><span class="co">#&gt;  [49] compiler_4.4.1            bit64_4.0.5              </span></span>
 <span><span class="co">#&gt;  [51] withr_3.0.0               BiocParallel_1.39.0      </span></span>
 <span><span class="co">#&gt;  [53] viridis_0.6.5             DBI_1.2.3                </span></span>
-<span><span class="co">#&gt;  [55] highr_0.11                HDF5Array_1.33.4         </span></span>
+<span><span class="co">#&gt;  [55] highr_0.11                HDF5Array_1.33.5         </span></span>
 <span><span class="co">#&gt;  [57] R.utils_2.12.3            rappdirs_0.3.3           </span></span>
 <span><span class="co">#&gt;  [59] DelayedArray_0.31.9       bluster_1.15.0           </span></span>
 <span><span class="co">#&gt;  [61] tools_4.4.1               vipor_0.4.7              </span></span>
@@ -871,7 +853,7 @@ reduction &amp; clustering” section above.</p>
 <span><span class="co">#&gt;  [85] bit_4.0.5                 tidyselect_1.2.1         </span></span>
 <span><span class="co">#&gt;  [87] locfit_1.5-9.10           Biostrings_2.73.1        </span></span>
 <span><span class="co">#&gt;  [89] knitr_1.48                gridExtra_2.3            </span></span>
-<span><span class="co">#&gt;  [91] edgeR_4.3.5               xfun_0.45                </span></span>
+<span><span class="co">#&gt;  [91] edgeR_4.3.5               xfun_0.46                </span></span>
 <span><span class="co">#&gt;  [93] statmod_1.5.0             DropletUtils_1.25.0      </span></span>
 <span><span class="co">#&gt;  [95] pheatmap_1.0.12           UCSC.utils_1.1.0         </span></span>
 <span><span class="co">#&gt;  [97] yaml_2.3.9                evaluate_0.24.0          </span></span>
